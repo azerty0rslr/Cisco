@@ -66,6 +66,6 @@ Routeur 0 = routeur cisco 10.255.4.1 255.255.255.252
   
 login - root  
 passworld - opensens  
-
+  
 Mettre l'interface visuelle sur le port 1.  
-Adresse IP pour accéder à l'interface web et non au firewall.
+Adresse IP pour accéder à l'interface web et non au firewall.  
