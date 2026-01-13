@@ -21,7 +21,7 @@ OPNsense :
 Routeur :  
 - interfaces  
 - transit  
-Livrables J2  
+**Livrables J2**  
 - clients VLAN20 / VLAN40 reçoivent IP  
 - ping GW OK  
 - sauvegardes  
@@ -33,7 +33,7 @@ règles firewall :
 - blocages internes  
 routes inter-divisions  
 DNS ```intranet.ttb.local```  
-Livrables J3  
+**Livrables J3**  
 - accès intranet depuis Marketing OK  
 - logs ALLOW / BLOCK  
 - ping inter-divisions  
@@ -43,7 +43,7 @@ Livrables J3
 - ping ICMPv6
 - route IPv6 inter-division
 - plan de tests exécuté
-Livrables J4
+**Livrables J4**
 - PV de recette
 - preuves IPv6
 - show ipv6 route
