@@ -52,3 +52,7 @@ DNS ```intranet.ttb.local```
 - runbook propre
 - procédures testées
 - rollback réel
+
+
+# Jour 1
+IP pc 192.168.1.2 jusqu'à 192.168.1.4
