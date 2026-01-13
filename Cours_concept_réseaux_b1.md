@@ -14,31 +14,32 @@ L'information est acheminée/transportée au travers des lignes de transmission 
 
 # Types de réseaux
 
-Peuvent être classifier par plusieurs axes : 
-**Modes de transmission :**
-- *mode point-à-point :* le support physique ne relie qu'une paire de nœuds
-- *modes multipoint (ou à diffusion) :* partage du support de transmission entre différents nœuds 
+Peuvent être classifier par plusieurs axes :  
+**Modes de transmission :**  
+- *mode point-à-point :* le support physique ne relie qu'une paire de nœuds  
+- *modes multipoint (ou à diffusion) :* partage du support de transmission entre différents nœuds  
 
 **Topologies :** 
-- *bus :* le support est partagé, toutes les stations peuvent émettre en même temps, le réseau gère les collisions
-- *anneau :* les stations peuvent émettre lorsqu'elles y sont invitées, les stations se passent la parole à tour de rôle, le débit est à peu près fixe
-- *étoile :* le nœud gère les conflits, chaque station dispose du débit maximum, le nœud d A COMPLETER
-- *arbre :* des étoiles interconnectées, fonctionne comme un bus actif, le nombre de nœuds peut être limité
+- *bus :* le support est partagé, toutes les stations peuvent émettre en même temps, le réseau gère les collisions  
+- *anneau :* les stations peuvent émettre lorsqu'elles y sont invitées, les stations se passent la parole à tour de rôle, le débit est à peu près fixe  
+- *étoile :* le nœud gère les conflits, chaque station dispose du débit maximum, le nœud d A COMPLETER  
+- *arbre :* des étoiles interconnectées, fonctionne comme un bus actif, le nombre de nœuds peut être limité  
 
-Catégories par taille :
-- BAN : Body Area Network
-- PAN : Personal Area Network (1 à 10m)
-- LAN : Local Area Network (10 à 1km)
-- MAN : Metropolitan Area Network (1km à 100km)
-- WAN : Wide Area Network (+ de 100km)
+Catégories par taille :  
+- BAN : Body Area Network  
+- PAN : Personal Area Network (1 à 10m)  
+- LAN : Local Area Network (10 à 1km)  
+- MAN : Metropolitan Area Network (1km à 100km)  
+- WAN : Wide Area Network (+ de 100km)  
 
-Catégories par type de support : 
-1e niveau - réseaux filaires (support physique utilisé pour la transmission), réseaux sans fil (système de transmission sans les contraintes du câblages)
+Catégories par type de support :  
+1e niveau - réseaux filaires (support physique utilisé pour la transmission), réseaux sans fil (système de transmission sans les contraintes du câblages)  
 
 # Architecture des réseaux 
 
-**Objectif des réseaux :** permettre à des applications de s'*échanger des informations* sans avoir à tenir compte de l'*hétérogénéité des moyens* et procédés de transmission. 
-=> Taches complexes pour implémenter les fonctionnalités nécessaires au fonctionnement du réseau.
+**Objectif des réseaux :** permettre à des applications de s'*échanger des informations* sans avoir à tenir compte de l'*hétérogénéité des moyens* et procédés de transmission.  
+=> Taches complexes pour implémenter les fonctionnalités nécessaires au fonctionnement du réseau.  
+  
 **Mise en œuvre :** adapter la technologie au support, masquer les phénomènes altérant la transmission, maintenir la qualité demandée, offrir l'interopérabilité, optimiser l'utilisation des ressources, assurer la pérennité des choix. 
 
 **Couches :** modèle en couches où chaque couche est une fonction, A COMPLETER
