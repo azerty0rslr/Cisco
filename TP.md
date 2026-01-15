@@ -70,3 +70,40 @@ passworld - opensens
 Mettre l'interface visuelle sur le port 1.  
 Adresse IP pour accéder à l'interface web et non au firewall.  
 
+
+# Jour 2
+## Configuration des VLANs
+```
+vlan 10
+ name ADMIN
+vlan 20
+ name USERS
+vlan 30
+ name SRV
+vlan 40
+ name GUEST
+
+interface Gi0/1
+ description TRUNK_OPNsENSE
+ switchport mode trunk
+ switchport trunk allowed vlan 10,20,30,40
+
+interface Gi0/2
+ description POSTE_USERS
+ switchport mode access
+ switchport access vlan 20
+
+interface Gi0/3
+ description POSTE_GUEST
+ switchport mode access
+ switchport access vlan 40
+```
+
+Vérif :  
+```
+show vlan brief
+
+show interfaces trunk
+
+show mac address-table
+```
