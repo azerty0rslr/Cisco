@@ -119,7 +119,12 @@ La fonctionnelle est la 192.168.1.1, il y a désormais la WAN d'ajouté à OPNse
 Au bout de 30min l'interface d'OPNsense crash avec l'erreur suivante :  
 <img width="869" height="182" alt="image" src="https://github.com/user-attachments/assets/4eebaa61-0d43-4e81-83dd-fd4c4d58f58c" />  
   
-En effet, le groupe de Thomas et Nino sont connectés sur la même adresse IP. Nous sommes donc tout deux bloqués.  
+En effet, le groupe de Thomas et Nino sont connectés sur la même adresse IP. Nous sommes donc tout deux bloqués. Le groupe de Thomas a donc changé d'IP.  
+Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO et que par conséquent rien n'était sauvegardé, en effet en relançant la VM il n'y avait plus nos VLANs :  
+<img width="1458" height="526" alt="image" src="https://github.com/user-attachments/assets/de2399dc-0066-4606-a709-681d830b1732" />  
+  
+On doit donc réinstaller l'iso mais pas en LIVE cette fois.  
+  
 
 
 ## Configuration des VLANs
