@@ -12,6 +12,32 @@ chef de groupe - Camélia
 - Schema logique
 - Analyse des flux
 
+- Analyse des flux
+- Schéma réseau
+- Plan IP
+
+
+**Adresse VLAN :** 
+
+- VLAN admin 10.100.4.0/26
+- VLAN user 10.100.4.64/26 -> Accés Admin
+- VLAN srv 10.100.4.128/27 -> Accés Unique Internet
+- VLAN guest 10.100.4.160/27 -> Interdiction Accés Internet & Intranet
+
+**Adresse WAN :**
+Commercial 172.16.0.11/24
+ **Marketing** 172.16.0.14/24
+
+  Router (transit) - 10.255.4.1/30
+  OPNsense (WAN) - 10.255.4.2/30 (passerelle VLAN)
+  ESX : Hyperviseur 
+
+Transit : 10.255.4.0/30
+
+<img width="544" height="290" alt="image" src="https://github.com/user-attachments/assets/40ca0362-f3a2-4245-9bda-3ab11b5aa1aa" />
+<img width="609" height="349" alt="image" src="https://github.com/user-attachments/assets/1995e80f-ed4b-480d-b308-fe439a3ff5da" />
+<img width="1688" height="844" alt="image" src="https://github.com/user-attachments/assets/63ac7d50-f145-42b4-a2da-733ac70ed922" />
+
 ## Jeudi 15
 ESXi : port groups  
 OPNsense :  
