@@ -73,8 +73,19 @@ Adresse IP pour accéder à l'interface web et non au firewall.
 
 # Jour 2
 ## VM OPNSense
-login : root
-password : opnsense
+login : root  
+password : opnsense  
+Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
+<img width="908" height="535" alt="image" src="https://github.com/user-attachments/assets/c0077e68-363c-41c1-817b-f0bfe774cd64" />  
+
+Il indique d'aller à l'adresse IP suivante : 192.168.1.98  
+<img width="597" height="492" alt="image" src="https://github.com/user-attachments/assets/e69e3a63-d6d6-4210-a894-ba7312116bf5" />  
+
+Les identifiants sont les mêmes que pour la VM (root et opnsense).  
+<img width="1820" height="825" alt="image" src="https://github.com/user-attachments/assets/cc97f62d-066b-45d4-a303-8020d9ed5816" />  
+
+
+
 
 ## Configuration des VLANs
 ```
