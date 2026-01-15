@@ -123,7 +123,7 @@ En effet, le groupe de Thomas et Nino sont connectés sur la même adresse IP. N
 Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO et que par conséquent rien n'était sauvegardé, en effet en relançant la VM il n'y avait plus nos VLANs :  
 <img width="1458" height="526" alt="image" src="https://github.com/user-attachments/assets/de2399dc-0066-4606-a709-681d830b1732" />  
   
-On doit donc réinstaller l'iso mais pas en LIVE cette fois.  
+On doit donc réinstaller l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
   
 
 
