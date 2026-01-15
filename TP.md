@@ -103,12 +103,24 @@ login : root
 password : opnsense  
 Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
 <img width="908" height="535" alt="image" src="https://github.com/user-attachments/assets/c0077e68-363c-41c1-817b-f0bfe774cd64" />  
-
+  
 Il indique d'aller à l'adresse IP suivante : 192.168.1.98  
 <img width="597" height="492" alt="image" src="https://github.com/user-attachments/assets/e69e3a63-d6d6-4210-a894-ba7312116bf5" />  
-
+  
 Les identifiants sont les mêmes que pour la VM (root et opnsense).  
 <img width="1820" height="825" alt="image" src="https://github.com/user-attachments/assets/cc97f62d-066b-45d4-a303-8020d9ed5816" />  
+  
+Il manquait une autre carte réseaux pour faire la WAN. Nous l'avons donc ajouté puis redémarré, il y a désormais 2 adresses IP  
+<img width="933" height="566" alt="image" src="https://github.com/user-attachments/assets/e9d7967a-5da1-4aff-bbd0-245f2ee54abd" />  
+  
+La fonctionnelle est la 192.168.1.1, il y a désormais la WAN d'ajouté à OPNsense.  
+<img width="1325" height="946" alt="image" src="https://github.com/user-attachments/assets/bb02ffea-e743-450b-8375-52d085d227b9" />  
+  
+Au bout de 30min l'interface d'OPNsense crash avec l'erreur suivante :  
+<img width="869" height="182" alt="image" src="https://github.com/user-attachments/assets/4eebaa61-0d43-4e81-83dd-fd4c4d58f58c" />  
+  
+En effet, le groupe de Thomas et Nino sont connectés sur la même adresse IP. Nous sommes donc tout deux bloqués.  
+
 
 ## Configuration des VLANs
 ```
