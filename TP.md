@@ -84,9 +84,6 @@ Il indique d'aller à l'adresse IP suivante : 192.168.1.98
 Les identifiants sont les mêmes que pour la VM (root et opnsense).  
 <img width="1820" height="825" alt="image" src="https://github.com/user-attachments/assets/cc97f62d-066b-45d4-a303-8020d9ed5816" />  
 
-
-
-
 ## Configuration des VLANs
 ```
 vlan 10
