@@ -72,6 +72,10 @@ Adresse IP pour accéder à l'interface web et non au firewall.
 
 
 # Jour 2
+## VM OPNSense
+login : root
+password : opnsense
+
 ## Configuration des VLANs
 ```
 vlan 10
