@@ -74,6 +74,8 @@ Adresse IP pour accéder à l'interface web et non au firewall.
 # Jour 2
 ## VM OPNSense
 Déjà on se connecte à la VM sur 192.168.1.210 avec les identifiants suivants : root - SDVNantes!  
+<img width="927" height="630" alt="image" src="https://github.com/user-attachments/assets/54da0a12-aeb0-47c2-98df-0fd445cf930e" />  
+  
 login : root  
 password : opnsense  
 Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
