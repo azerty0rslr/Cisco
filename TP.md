@@ -34,9 +34,6 @@ Commercial 172.16.0.11/24
 
 Transit : 10.255.4.0/30
 
-<img width="544" height="290" alt="image" src="https://github.com/user-attachments/assets/40ca0362-f3a2-4245-9bda-3ab11b5aa1aa" />
-<img width="609" height="349" alt="image" src="https://github.com/user-attachments/assets/1995e80f-ed4b-480d-b308-fe439a3ff5da" />
-<img width="1688" height="844" alt="image" src="https://github.com/user-attachments/assets/63ac7d50-f145-42b4-a2da-733ac70ed922" />
 
 ## Jeudi 15
 ESXi : port groups  
