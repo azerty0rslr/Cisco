@@ -75,7 +75,11 @@ Une réinstallation a donc été effectuée avec l'iso mais pas en LIVE cette fo
 ## DHCP
 Nous configurons le DHCP dans Kea DHCP avec la doc suivante : https://www.zenarmor.com/docs/network-security-tutorials/how-to-setup-dhcp-server-on-opnsense  
 <img width="976" height="509" alt="image" src="https://github.com/user-attachments/assets/945911b9-6d3c-4bfd-999d-fa70060f8ca0" />  
-<img width="975" height="671" alt="image" src="https://github.com/user-attachments/assets/9af2b943-4620-423e-b28b-24ecc02b2696" />
+<img width="975" height="671" alt="image" src="https://github.com/user-attachments/assets/9af2b943-4620-423e-b28b-24ecc02b2696" />  
+
+On configure aussi pour la LAN :  
+<img width="1522" height="907" alt="image" src="https://github.com/user-attachments/assets/4393371f-1040-41c6-b7bb-4d8bf348321e" />  
+  
 
 ## VLANs
 Tout d'abord on créer les VLANs (pas oublier de faire apply) :  
