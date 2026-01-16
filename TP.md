@@ -5,23 +5,16 @@ Chef de groupe - Camélia
 Responsables clients et VLANs - Hermann et Yoann  
 Responsables routeur et documentation - Manon et Mohammed  
 Responsable switch et routeur - Landry  
-
-## Vendredi 16
-règles firewall :  
-- GUEST Internet only  
-- USERS Internet  
-- blocages internes  
-routes inter-divisions  
-DNS ```intranet.ttb.local```  
-  
   
 # Jour 1
 ## Configuration des adressages IP  
 ### Adresse VLAN :
 - VLAN admin 10.100.4.0/26  
-- VLAN user 10.100.4.64/26 -> Accès Admin  
-- VLAN srv 10.100.4.128/27 -> Accès Unique Internet  
-- VLAN guest 10.100.4.160/27 -> Interdiction Accès Internet & Intranet  
+- VLAN user 10.100.4.64/26 -> Interdiction accès Admin  
+- VLAN srv 10.100.4.128/27 -> Accès uniquement Internet  
+- VLAN guest 10.100.4.160/27 -> Interdiction Accès Internet  
+  
+Règles firewall - blocages internes, routes inter-divisions  
   
 ### Adresse WAN :
 Commercial - 172.16.0.11/24  
