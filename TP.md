@@ -142,6 +142,9 @@ Puis on paramètres les VLANs de la façon suivante :
 <img width="906" height="715" alt="image" src="https://github.com/user-attachments/assets/4012cbab-e0c5-4dd0-a38e-087e9dc94aea" />  
 Faire save et répéter l'opération pour les 4 VLANs.  
 
+Ensuite on défini les règles de firewall sur chaque VLANs notamment pour bloquer la VLAN guest :  
+<img width="1527" height="577" alt="image" src="https://github.com/user-attachments/assets/f8a21916-57f9-4e50-87a0-f6864e99fd55" />  
+
 Configurer le lien Trunck sur le switch et faire les pools d'adressage IP.
 
 Les clients sur le port 2 et 3.  
