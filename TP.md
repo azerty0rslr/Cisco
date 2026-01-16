@@ -49,6 +49,7 @@ Déjà on se connecte à la VM sur 192.168.1.210 avec les identifiants suivants 
   
 Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
 <img width="908" height="535" alt="image" src="https://github.com/user-attachments/assets/c0077e68-363c-41c1-817b-f0bfe774cd64" />  
+<img width="901" height="543" alt="image" src="https://github.com/user-attachments/assets/25d34a74-f1ea-4d81-97b4-fffbd8f45bff" />  
   
 Il indique d'aller à l'adresse IP suivante : 192.168.1.98  
 <img width="597" height="492" alt="image" src="https://github.com/user-attachments/assets/e69e3a63-d6d6-4210-a894-ba7312116bf5" />  
@@ -72,8 +73,7 @@ Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO
 On doit donc réinstaller l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
 
 ## Landry
-<img width="904" height="539" alt="image" src="https://github.com/user-attachments/assets/c3a0973b-c838-4dc9-9373-29bf8c0361d1" />  
-<img width="901" height="543" alt="image" src="https://github.com/user-attachments/assets/25d34a74-f1ea-4d81-97b4-fffbd8f45bff" />  
+
   
 Tous les ports du switch sont en auto-négociation, pour changer cela et que tous les ports soient down on fait :  
 <img width="588" height="54" alt="image" src="https://github.com/user-attachments/assets/8303c3f3-a9ad-48b4-a6f7-9304f224f6bb" />  
