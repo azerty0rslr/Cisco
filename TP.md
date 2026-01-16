@@ -49,6 +49,8 @@ Déjà on se connecte à la VM sur 192.168.1.210 avec les identifiants suivants 
   
 Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
 <img width="908" height="535" alt="image" src="https://github.com/user-attachments/assets/c0077e68-363c-41c1-817b-f0bfe774cd64" />  
+
+Puis on configure les adresses IP pour les interfaces :  
 <img width="901" height="543" alt="image" src="https://github.com/user-attachments/assets/25d34a74-f1ea-4d81-97b4-fffbd8f45bff" />  
   
 Il indique d'aller à l'adresse IP suivante : 192.168.1.98  
@@ -72,20 +74,6 @@ Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO
   
 On doit donc réinstaller l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
 
-## Landry
-
-  
-Tous les ports du switch sont en auto-négociation, pour changer cela et que tous les ports soient down on fait :  
-<img width="588" height="54" alt="image" src="https://github.com/user-attachments/assets/8303c3f3-a9ad-48b4-a6f7-9304f224f6bb" />  
-  
-On est connecté au port 1 donc on le laisse pour le moment.  
-On attribue a chaque vlan des ports du switch :  
-<img width="609" height="308" alt="image" src="https://github.com/user-attachments/assets/4c731aca-85ed-47c1-98a8-25a4a9b85e14" />  
-  
-En faisant ```show vlan ports 2``` on voit la vlan qui est attribué au port 2. Ainsi on vérifie tout les ports pour être sûr.  
-Pour configurer le switch en mode trunk switch <--> routeur on attribue au port1 l'accès a toutes les VLANs.  
-<img width="684" height="441" alt="image" src="https://github.com/user-attachments/assets/72668832-cb66-4cbe-b1bc-48dcecb30e36" />  
-
   
 # Jour 3
 ## DHCP
@@ -105,48 +93,15 @@ Faire save et répéter l'opération pour les 4 VLANs.
 Ensuite on défini les règles de firewall sur chaque VLANs notamment pour bloquer la VLAN guest :  
 <img width="290" height="454" alt="image" src="https://github.com/user-attachments/assets/f5c09056-aafc-43fe-a5a2-9095731b0fa9" />  
 <img width="1527" height="577" alt="image" src="https://github.com/user-attachments/assets/f8a21916-57f9-4e50-87a0-f6864e99fd55" />  
-
-Configurer le lien Trunck sur le switch et faire les pools d'adressage IP.
-
-Les clients sur le port 2 et 3.  
-Carte réseau en automatique DHCP.  
-
-
-
-
-
-## Configuration des VLANs
-```
-vlan 10
- name ADMIN
-vlan 20
- name USERS
-vlan 30
- name SRV
-vlan 40
- name GUEST
-
-interface Gi0/1
- description TRUNK_OPNsENSE
- switchport mode trunk
- switchport trunk allowed vlan 10,20,30,40
-
-interface Gi0/2
- description POSTE_USERS
- switchport mode access
- switchport access vlan 20
-
-interface Gi0/3
- description POSTE_GUEST
- switchport mode access
- switchport access vlan 40
-```
-
-Vérif :  
-```
-show vlan brief
-
-show interfaces trunk
-
-show mac address-table
-```
+  
+## Configuration du switch 
+Tous les ports du switch sont en auto-négociation, pour changer cela et que tous les ports soient down on fait :  
+<img width="588" height="54" alt="image" src="https://github.com/user-attachments/assets/8303c3f3-a9ad-48b4-a6f7-9304f224f6bb" />  
+  
+On est connecté au port 1 donc on le laisse pour le moment.  
+On attribue a chaque vlan des ports du switch :  
+<img width="609" height="308" alt="image" src="https://github.com/user-attachments/assets/4c731aca-85ed-47c1-98a8-25a4a9b85e14" />  
+  
+En faisant ```show vlan ports 2``` on voit la vlan qui est attribué au port 2. Ainsi on vérifie tout les ports pour être sûr.  
+Pour configurer le switch en mode trunk switch <--> routeur on attribue au port1 l'accès a toutes les VLANs.  
+<img width="684" height="441" alt="image" src="https://github.com/user-attachments/assets/72668832-cb66-4cbe-b1bc-48dcecb30e36" />  
