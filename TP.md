@@ -9,10 +9,10 @@ Responsable switch et routeur - Landry
 # Jour 1
 ## Configuration des adressages IP  
 ### Adresse VLAN :
-- VLAN admin 10.100.4.0/26  
-- VLAN user 10.100.4.64/26 -> Interdiction accès Admin  
-- VLAN srv 10.100.4.128/27 -> Accès uniquement Internet  
-- VLAN guest 10.100.4.160/27 -> Interdiction Accès Internet  
+VLAN10 : Administration 10.100.4.1 255.255.255.192  
+VLAN20 : Utilisateurs 10.100.4.65 255.255.255.192 -> Interdiction accès Admin  
+VLAN30 : Serveurs 10.100.4.129 255.255.255.224  
+VLAN40 : Invités 10.100.4.161 255.255.255.224 -> Interdiction Accès Intranet/Interne  
   
 Règles firewall - blocages internes, routes inter-divisions  
   
@@ -20,17 +20,13 @@ Règles firewall - blocages internes, routes inter-divisions
 Commercial - 172.16.0.11/24  
 Marketing - 172.16.0.14/24  
   
-Router (transit) - 10.255.4.1/30  
-OPNsense (WAN) - 10.255.4.2/30 (passerelle VLAN)  
+Router (transit) - 10.255.4.1/30 routeur Cisco assure la sortie vers les autres divisions.  
+OPNsense (WAN) - 10.255.4.2/30 joue le rôle de firewall et de passerelle pour les VLANs internes.  
   
-Transit : 10.255.4.0/30  
+Transit : 10.255.4.0/30 correspond au réseau de transit entre OPNsense et le routeur Cisco.  
   
 IP pc 192.168.1.2 jusqu'à 192.168.1.4  
 IP switch 192.168.1.50 et 192.168.1.51  
-VLAN10 10.100.4.1 255.255.255.192  
-VLAN20 10.100.4.65 255.255.255.192  
-VLAN30 10.100.4.129 255.255.255.224  
-VLAN40 10.100.4.161 255.255.255.224  
   
 Routeur 0 = routeur cisco 10.255.4.1 255.255.255.252  
   
@@ -71,8 +67,8 @@ Au bout de 30min l'interface d'OPNsense crash avec l'erreur suivante :
 En effet, le groupe de Thomas et Nino sont connectés sur la même adresse IP. Nous sommes donc tout deux bloqués. Le groupe de Thomas a donc changé d'IP.  
 Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO et que par conséquent rien n'était sauvegardé, en effet en relançant la VM il n'y avait plus nos VLANs :  
 <img width="1458" height="526" alt="image" src="https://github.com/user-attachments/assets/de2399dc-0066-4606-a709-681d830b1732" />  
-  
-On doit donc réinstaller l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
+
+Une réinstallation a donc été effectuée avec l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
 
   
 # Jour 3
@@ -90,7 +86,8 @@ Puis on paramètres les VLANs de la façon suivante :
 <img width="906" height="715" alt="image" src="https://github.com/user-attachments/assets/4012cbab-e0c5-4dd0-a38e-087e9dc94aea" />  
 Faire save et répéter l'opération pour les 4 VLANs.  
 
-Ensuite on défini les règles de firewall sur chaque VLANs notamment pour bloquer la VLAN guest :  
+Des règles de firewall ont été définies sur chaque VLAN.  
+Le VLAN guest est isolé afin de valider le bon fonctionnement des règles de filtrage.  
 <img width="290" height="454" alt="image" src="https://github.com/user-attachments/assets/f5c09056-aafc-43fe-a5a2-9095731b0fa9" />  
 <img width="1527" height="577" alt="image" src="https://github.com/user-attachments/assets/f8a21916-57f9-4e50-87a0-f6864e99fd55" />  
   
@@ -103,5 +100,5 @@ On attribue a chaque vlan des ports du switch :
 <img width="609" height="308" alt="image" src="https://github.com/user-attachments/assets/4c731aca-85ed-47c1-98a8-25a4a9b85e14" />  
   
 En faisant ```show vlan ports 2``` on voit la vlan qui est attribué au port 2. Ainsi on vérifie tout les ports pour être sûr.  
-Pour configurer le switch en mode trunk switch <--> routeur on attribue au port1 l'accès a toutes les VLANs.  
+On configure le port 1 du switch en mode trunk afin de transporter les VLANs vers OPNsense (routeur).  
 <img width="684" height="441" alt="image" src="https://github.com/user-attachments/assets/72668832-cb66-4cbe-b1bc-48dcecb30e36" />  
