@@ -19,9 +19,9 @@ DNS ```intranet.ttb.local```
 ## Configuration des adressages IP  
 ### Adresse VLAN :
 - VLAN admin 10.100.4.0/26  
-- VLAN user 10.100.4.64/26 -> Accés Admin  
-- VLAN srv 10.100.4.128/27 -> Accés Unique Internet  
-- VLAN guest 10.100.4.160/27 -> Interdiction Accés Internet & Intranet  
+- VLAN user 10.100.4.64/26 -> Accès Admin  
+- VLAN srv 10.100.4.128/27 -> Accès Unique Internet  
+- VLAN guest 10.100.4.160/27 -> Interdiction Accès Internet & Intranet  
   
 ### Adresse WAN :
 Commercial - 172.16.0.11/24  
