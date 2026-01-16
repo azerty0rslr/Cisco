@@ -124,6 +124,22 @@ Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO
 <img width="1458" height="526" alt="image" src="https://github.com/user-attachments/assets/de2399dc-0066-4606-a709-681d830b1732" />  
   
 On doit donc réinstaller l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
+
+## Landry
+<img width="904" height="539" alt="image" src="https://github.com/user-attachments/assets/c3a0973b-c838-4dc9-9373-29bf8c0361d1" />  
+<img width="901" height="543" alt="image" src="https://github.com/user-attachments/assets/25d34a74-f1ea-4d81-97b4-fffbd8f45bff" />  
+  
+Tous les ports du switch sont en auto-négociation, pour changer cela et que tous les ports soient down on fait :  
+<img width="588" height="54" alt="image" src="https://github.com/user-attachments/assets/8303c3f3-a9ad-48b4-a6f7-9304f224f6bb" />  
+  
+On est connecté au port 1 donc on le laisse pour le moment.  
+On attribue a chaque vlan des ports du switch :  
+<img width="609" height="308" alt="image" src="https://github.com/user-attachments/assets/4c731aca-85ed-47c1-98a8-25a4a9b85e14" />  
+  
+En faisant ```show vlan ports 2``` on voit la vlan qui est attribué au port 2. Ainsi on vérifie tout les ports pour être sûr.  
+Pour configurer le switch en mode trunk switch <--> routeur on attribue au port1 l'accès a toutes les VLANs.  
+<img width="684" height="441" alt="image" src="https://github.com/user-attachments/assets/72668832-cb66-4cbe-b1bc-48dcecb30e36" />  
+
   
 # Jour 3
 ## DHCP
