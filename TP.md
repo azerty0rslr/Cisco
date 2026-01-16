@@ -3,7 +3,7 @@
 **MARKETING INTERNATIONNAL**  
 Chef de groupe - Camélia  
 Responsables clients et VLANs - Hermann et Yoann  
-Responsables routeur et documentation - Manon et Mohammed  
+Responsables routeur et documentation - Manon et Mohamed  
 Responsable switch et routeur - Landry  
   
 # Jour 1
