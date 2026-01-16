@@ -1,53 +1,10 @@
 # Organisation
 ## Rôle : 
 **MARKETING INTERNATIONNAL**  
-chef de groupe - Camélia  
-
-## Maitre mots du projet
- stable, sécurisé et documenté
-
-# Emploi du temps
-## Mardi 13
-- Plan adressage IP
-- Schema logique
-- Analyse des flux
-
-- Analyse des flux
-- Schéma réseau
-- Plan IP
-
-
-**Adresse VLAN :** 
-
-- VLAN admin 10.100.4.0/26
-- VLAN user 10.100.4.64/26 -> Accés Admin
-- VLAN srv 10.100.4.128/27 -> Accés Unique Internet
-- VLAN guest 10.100.4.160/27 -> Interdiction Accés Internet & Intranet
-
-**Adresse WAN :**
-Commercial 172.16.0.11/24
- **Marketing** 172.16.0.14/24
-
-  Router (transit) - 10.255.4.1/30
-  OPNsense (WAN) - 10.255.4.2/30 (passerelle VLAN)
-  ESX : Hyperviseur 
-
-Transit : 10.255.4.0/30
-
-
-## Jeudi 15
-ESXi : port groups  
-OPNsense :  
-- interfaces  
-- VLANs  
-- DHCP / DNS  
-Routeur :  
-- interfaces  
-- transit  
-**Livrables J2**  
-- clients VLAN20 / VLAN40 reçoivent IP  
-- ping GW OK  
-- sauvegardes  
+Chef de groupe - Camélia  
+Responsables clients et VLANs - Hermann et Yoann  
+Responsables routeur et documentation - Manon et Mohammed  
+Responsable switch et routeur - Landry  
 
 ## Vendredi 16
 règles firewall :  
@@ -56,28 +13,25 @@ règles firewall :
 - blocages internes  
 routes inter-divisions  
 DNS ```intranet.ttb.local```  
-**Livrables J3**  
-- accès intranet depuis Marketing OK  
-- logs ALLOW / BLOCK  
-- ping inter-divisions  
-
-## Jeudi 22
-- IPv6 sur VLAN20
-- ping ICMPv6
-- route IPv6 inter-division
-- plan de tests exécuté
-**Livrables J4**
-- PV de recette
-- preuves IPv6
-- show ipv6 route
-
-### Livrables
-- runbook propre
-- procédures testées
-- rollback réel
-
-
+  
+  
 # Jour 1
+## Configuration des adressages IP  
+### Adresse VLAN :
+- VLAN admin 10.100.4.0/26  
+- VLAN user 10.100.4.64/26 -> Accés Admin  
+- VLAN srv 10.100.4.128/27 -> Accés Unique Internet  
+- VLAN guest 10.100.4.160/27 -> Interdiction Accés Internet & Intranet  
+  
+### Adresse WAN :
+Commercial - 172.16.0.11/24  
+Marketing - 172.16.0.14/24  
+  
+Router (transit) - 10.255.4.1/30  
+OPNsense (WAN) - 10.255.4.2/30 (passerelle VLAN)  
+  
+Transit : 10.255.4.0/30  
+  
 IP pc 192.168.1.2 jusqu'à 192.168.1.4  
 IP switch 192.168.1.50 et 192.168.1.51  
 VLAN10 10.100.4.1 255.255.255.192  
@@ -87,8 +41,9 @@ VLAN40 10.100.4.161 255.255.255.224
   
 Routeur 0 = routeur cisco 10.255.4.1 255.255.255.252  
   
+### OpenSense
 login - root  
-passworld - opensens  
+passworld - opensense  
   
 Mettre l'interface visuelle sur le port 1.  
 Adresse IP pour accéder à l'interface web et non au firewall.  
@@ -99,8 +54,6 @@ Adresse IP pour accéder à l'interface web et non au firewall.
 Déjà on se connecte à la VM sur 192.168.1.210 avec les identifiants suivants : root - SDVNantes!  
 <img width="927" height="630" alt="image" src="https://github.com/user-attachments/assets/54da0a12-aeb0-47c2-98df-0fd445cf930e" />  
   
-login : root  
-password : opnsense  
 Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
 <img width="908" height="535" alt="image" src="https://github.com/user-attachments/assets/c0077e68-363c-41c1-817b-f0bfe774cd64" />  
   
@@ -147,8 +100,6 @@ Nous configurons le DHCP dans Kea DHCP avec la doc suivante : https://www.zenarm
 <img width="976" height="509" alt="image" src="https://github.com/user-attachments/assets/945911b9-6d3c-4bfd-999d-fa70060f8ca0" />  
 <img width="975" height="671" alt="image" src="https://github.com/user-attachments/assets/9af2b943-4620-423e-b28b-24ecc02b2696" />
 
-
-
 ## VLANs
 Tout d'abord on créer les VLANs (pas oublier de faire apply) :  
 <img width="1771" height="780" alt="image" src="https://github.com/user-attachments/assets/1b501016-8caf-41a6-b15f-490ad93a3dfb" />  
@@ -166,6 +117,9 @@ Configurer le lien Trunck sur le switch et faire les pools d'adressage IP.
 
 Les clients sur le port 2 et 3.  
 Carte réseau en automatique DHCP.  
+
+
+
 
 
 ## Configuration des VLANs
