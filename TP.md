@@ -125,6 +125,27 @@ Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO
   
 On doit donc réinstaller l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
   
+# Jour 3
+## DHCP
+Nous configurons le DHCP dans Kea DHCP avec la doc suivante : https://www.zenarmor.com/docs/network-security-tutorials/how-to-setup-dhcp-server-on-opnsense  
+<img width="976" height="509" alt="image" src="https://github.com/user-attachments/assets/945911b9-6d3c-4bfd-999d-fa70060f8ca0" />  
+<img width="975" height="671" alt="image" src="https://github.com/user-attachments/assets/9af2b943-4620-423e-b28b-24ecc02b2696" />
+
+
+
+## VLANs
+Tout d'abord on créer les VLANs (pas oublier de faire apply) :  
+<img width="1771" height="780" alt="image" src="https://github.com/user-attachments/assets/1b501016-8caf-41a6-b15f-490ad93a3dfb" />  
+  
+Puis on paramètres les VLANs de la façon suivante :  
+<img width="1812" height="718" alt="image" src="https://github.com/user-attachments/assets/9e784bbd-a99d-46ea-8a76-252e07493851" />  
+<img width="906" height="715" alt="image" src="https://github.com/user-attachments/assets/4012cbab-e0c5-4dd0-a38e-087e9dc94aea" />  
+Faire save et répéter l'opération pour les 4 VLANs.  
+
+Configurer le lien Trunck sur le switch et faire les pools d'adressage IP.
+
+Les clients sur le port 2 et 3.  
+Carte réseau en automatique DHCP.  
 
 
 ## Configuration des VLANs
