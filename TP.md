@@ -145,3 +145,24 @@ On reprend le même fonctionnement pour définir les paramètrages adaptés à V
 ### VLAN Server 
 Idem on continue sur le même fonctionnement pour les paramètrages :  
 <img width="1530" height="488" alt="image" src="https://github.com/user-attachments/assets/6d13cf2f-5d8e-411b-80aa-a16b9951a42b" />  
+
+### Inter-divisions
+Par défaut OPNsense bloque toute communication entre VLANs.  
+Aucun flux inter-division est autorisé sans règle.  
+  
+Il faudrait faire une règle pour autoriser le trafic avec le G2 mais nous ne le ferons pas maintenant.  
+
+## DHCP 
+Suite au changement d'adresse IP (passage de 192.168 à 10.100) nous devons refaire les plages IP du DHCP et l'activer.  
+
+### VLAN Admin
+<img width="1506" height="690" alt="image" src="https://github.com/user-attachments/assets/701a8e0b-3615-4a74-9322-85e1b14633af" />  
+
+### VLAN Users
+<img width="1509" height="722" alt="image" src="https://github.com/user-attachments/assets/a9b60872-e462-4d3b-8634-725541679ff1" />  
+
+### VLAN Server
+<img width="1507" height="694" alt="image" src="https://github.com/user-attachments/assets/883ceba2-bda5-4d3a-b97c-0d41ef55bab2" />  
+
+### VLAN Guest
+<img width="1513" height="714" alt="image" src="https://github.com/user-attachments/assets/0419d2d1-40e9-4a15-987b-622bd85277a8" />  
