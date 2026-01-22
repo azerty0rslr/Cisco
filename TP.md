@@ -106,3 +106,10 @@ On attribue a chaque vlan des ports du switch :
 En faisant ```show vlan ports 2``` on voit la vlan qui est attribué au port 2. Ainsi on vérifie tout les ports pour être sûr.  
 On configure le port 1 du switch en mode trunk afin de transporter les VLANs vers OPNsense (routeur).  
 <img width="684" height="441" alt="image" src="https://github.com/user-attachments/assets/72668832-cb66-4cbe-b1bc-48dcecb30e36" />  
+
+# Jour 4
+Tout d'abord l'adresse IP a changé c'est désormais 10.30.0.20 :  
+<img width="911" height="543" alt="image" src="https://github.com/user-attachments/assets/544f552e-0a82-4de9-9fab-9ecdf1094279" />  
+  
+En essayant de se connecter à OPNsense (192.168.1.1) on tombe sur UniFI OS :  
+Changer adresse IP LAN :  
