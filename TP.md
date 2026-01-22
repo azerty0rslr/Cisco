@@ -114,7 +114,7 @@ Tout d'abord l'adresse IP a changé c'est désormais 10.30.0.20 :
 En essayant de se connecter à OPNsense (192.168.1.1) on tombe sur UniFI OS :  
 <img width="1525" height="760" alt="image" src="https://github.com/user-attachments/assets/2ebaacb9-ee68-442d-8369-ef1c6802d270" />  
   
-Changer adresse IP LAN en faisant 2 sur la config :  
+On a donc changé l'adresse IP LAN en faisant 2 sur la config :  
 <img width="905" height="534" alt="image" src="https://github.com/user-attachments/assets/50b22b2a-211f-4879-9956-3ca2df712a6f" />  
   
-Suite à des problèmes on a dû réactiver les VLANs, 
+Suite à des problèmes (de carte réseau) on a dû réactiver les VLANs, puis remettre les règles firewall (
