@@ -118,3 +118,30 @@ On a donc changé l'adresse IP LAN en faisant 2 sur la config :
 <img width="905" height="534" alt="image" src="https://github.com/user-attachments/assets/50b22b2a-211f-4879-9956-3ca2df712a6f" />  
   
 Suite à des problèmes (de carte réseau) on a dû réactiver les VLANs, puis remettre les règles firewall (voir la partie sur les VLANs du jour 3).  
+
+## Firewall (bis)
+### VLAN Users
+Autoriser le DNS :  
+<img width="1374" height="670" alt="image" src="https://github.com/user-attachments/assets/e8d3e790-0a24-4cff-a5bc-49397035a680" />  
+  
+Bloquer l'accès à ADMIN (vlan10) :  
+<img width="1159" height="713" alt="image" src="https://github.com/user-attachments/assets/128cf4fa-8145-48a2-aff3-68d63d5b7ef1" />  
+  
+Le VLAN20 (USERS) dispose d’un accès Internet limité aux services DNS et Web.  
+Toute tentative d’accès au VLAN ADMIN est explicitement bloquée par règle firewall dédiée.  
+  
+<img width="1513" height="562" alt="image" src="https://github.com/user-attachments/assets/dce34fba-3faf-47f4-bff2-8620cb665abc" />  
+  
+### VLAN Admin
+Autoriser le HTTPS :  
+<img width="1420" height="689" alt="image" src="https://github.com/user-attachments/assets/69a4cf71-32ce-4429-9fa6-53d0986ab869" />  
+
+<img width="1525" height="440" alt="image" src="https://github.com/user-attachments/assets/445d2dfd-760e-4213-917a-8ef879ed7976" />  
+
+### VLAN Guest 
+On reprend le même fonctionnement pour définir les paramètrages adaptés à VLAN Guest :  
+<img width="1514" height="554" alt="image" src="https://github.com/user-attachments/assets/efcc7437-a37b-4a5f-b1e0-efbe22001360" />  
+
+### VLAN Server 
+Idem on continue sur le même fonctionnement pour les paramètrages :  
+<img width="1530" height="488" alt="image" src="https://github.com/user-attachments/assets/6d13cf2f-5d8e-411b-80aa-a16b9951a42b" />  
