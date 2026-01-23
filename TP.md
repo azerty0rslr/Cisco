@@ -12,11 +12,9 @@ Responsable réseau - Landry
 VLAN10 : Administration 10.100.4.1 255.255.255.192  
 VLAN20 : Utilisateurs 10.100.4.65 255.255.255.192 -> Interdiction accès Admin  
 VLAN30 : Serveurs 10.100.4.129 255.255.255.224  
-VLAN40 : Invités 10.100.4.161 255.255.255.224 -> Interdiction Accès Intranet/Interne  
+VLAN40 : Invités 10.100.4.161 255.255.255.224 -> Interdiction accès Intranet/Interne  
   
-Règles firewall - blocages internes, routes inter-divisions  
-  
-### Adresse WAN :
+### Autres adresses IP :
 Commercial - 172.16.0.11/24  
 Marketing - 172.16.0.14/24  
   
@@ -30,17 +28,9 @@ IP switch 192.168.1.50 et 192.168.1.51
   
 Routeur 0 = routeur cisco 10.255.4.1 255.255.255.252  
   
-### OpenSense
-login - root  
-passworld - opensense  
-  
-Mettre l'interface visuelle sur le port 1.  
-Adresse IP pour accéder à l'interface web et non au firewall.  
-
-
 # Jour 2
 ## VM OPNSense
-Déjà on se connecte à la VM sur 192.168.1.210 avec les identifiants suivants : root - SDVNantes!  
+Déjà on se connecte à la VM sur 192.168.1.210 (root - SDVNantes!)  
 <img width="927" height="630" alt="image" src="https://github.com/user-attachments/assets/54da0a12-aeb0-47c2-98df-0fd445cf930e" />  
   
 Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage suivant apparaît :  
@@ -169,138 +159,10 @@ Suite au changement d'adresse IP (passage de 192.168 à 10.100) nous devons refa
 
 # Jour 5
 ## PV de recette
-Test n°1 - Client VLAN20 : DHCP OK + ping GW OK  
-Objectif : Tester DHCP et ping GW depuis la VLAN20  
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
+Voir le fichier markdown du même nom (TP_PV_recette.md).  
 
-Test n°2 - Client VLAN20 : DNS OK (résolution) 
-Objectif : Tester DNS depuis la VLAN20
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
+## Routeur général
+Camélia a connecté les 4 groupes via un routeur général simple avec un OPNSense. Elle a monté les cartes réseaux sur la machine pour que tout soit lié.  
 
-Test n°3 - Client VLAN20 : accès web/service externe OK (si service disponible)  
-Objectif : Tester HTTPS/HTTP depuis la VLAN20
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°4 - Client VLAN20 : accès VLAN10 interdit (preuve) 
-Objectif : Tester VLAN10 depuis la VLAN20
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°5 - Client VLAN10 : accès admin OPNsense (HTTPS) OK 
-Objectif : Tester de ping 10.100.4.5 (OPNSense) depuis la VLAN10
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°6 - Client VLAN40 : Internet OK ; accès interne interdit 
-Objectif : Tester HTTP/HTTPS depuis la VLAN40 et les autres VLANs/LAN
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°7 - Inter-divisions IPv4 : ping + traceroute vers 2 divisions 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°8 - IPv6 : ping ICMPv6 local + ping ICMPv6 inter-division (1 minimum)
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°9 - Logs : 1 preuve ALLOW + 1 preuve BLOCK associées à vos règles 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°10 - Preuve L2 : ARP/MAC observé et expliqué (court) 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°11 - Preuve routage : show ip route expliqué (au moins 5 lignes) 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°12 - Flux imposé : depuis G1 et G4, accès au portail intranet.ttb.local (HTTPS) OK (preuve) 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°13 - Flux imposé : depuis G3, accès au portail intranet.ttb.local KO (preuve)
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°14 - Encapsulation/OSI (flux intranet) : explication 8 lignes max + capture associée.
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°15 - Transport : capture DNS (UDP/53) + capture début HTTPS (TCP/443 SYN/SYN-ACK/ACK).
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°16 - Switching : preuve show mac address-table (si switch Cisco) ou preuve ARP/broadcast + explication broadcast domain vs collision domain. 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
-
-Test n°17 - Subnetting : 1 calcul détaillé (réseau/broadcast/plage/nb hôtes) prouvant que le VLAN choisi couvre le besoin. 
-Objectif : 
-Méthode :
-Résultat attendu :
-Résultat obtenu :
-Preuve :
-Conclusion :
+## Connecter routeur au switch
+Landry a configuré le trunck (transporte toutes les VLANs à partir d'un seul port).  
