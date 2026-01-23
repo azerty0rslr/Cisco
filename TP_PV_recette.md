@@ -99,7 +99,7 @@ Résultat obtenu :
 
 Preuve :  
 <img width="1027" height="276" alt="image" src="https://github.com/user-attachments/assets/0b9abb2e-0a5e-4877-91a1-afada83be7b3" />  
-
+<img width="815" height="230" alt="image" src="https://github.com/user-attachments/assets/a4ecfd17-44ff-4c7a-9069-a3183dfa7842" />  
 
 Conclusion :  
   
@@ -110,10 +110,11 @@ Méthode :
 - Réaliser un traceroute vers ces mêmes destinations
   
 Résultat attendu :  
-- Les pings aboutissent
+- Les pings n'aboutissent pas
 - Le traceroute montre le chemin correct via les routeurs intermédiaires
   
 Résultat obtenu :  
+- En branchant 2 
 Preuve :  
 Conclusion :  
   
