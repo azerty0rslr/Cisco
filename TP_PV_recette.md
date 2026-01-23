@@ -1,4 +1,4 @@
-# PV de recette
+<img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/41439914-cef0-42d5-9bdf-88332290a565" /># PV de recette
 
 ## Test n°1 - Client VLAN20 : DHCP OK + ping GW OK  
 Objectif : Vérifier que le client du VLAN20 obtient une configuration IP via DHCP et peut joindre sa passerelle par défaut.  
@@ -114,24 +114,41 @@ Résultat attendu :
 - Le traceroute montre le chemin correct via les routeurs intermédiaires
   
 Résultat obtenu :  
-- En branchant 2 
-Preuve :  
+- En branchant 2 PC, un sur VLAN10 et l'autre sur VLAN20 les ping n'aboutissent pas entre eux
+- Idem avec 2 PC, un sur VLAN20 et l'autre sur VLAN30 les ping n'aboutissent pas entre eux
+  
+Preuve :
+<img width="821" height="240" alt="image" src="https://github.com/user-attachments/assets/2dc3e647-28cf-442f-a03d-be369e6d474a" />  
+<img width="822" height="231" alt="image" src="https://github.com/user-attachments/assets/ea81847c-d7ba-4999-91e9-bd441360f476" />  
+
 Conclusion :  
   
-## Test n°8 - IPv6 : ping ICMPv6 local + ping ICMPv6 inter-division (1 minimum)
-Objectif : Vérifier la connectivité IPv6 locale et inter-division.  
-Méthode :  
-- Vérifier l’attribution d’une adresse IPv6 sur un poste
-- Effectuer un ping ICMPv6 vers la passerelle locale
-- Effectuer un ping ICMPv6 vers une machine d’une autre division
+## Test n°8 - IPv6 : ping ICMPv6 local + ping ICMPv6 inter-division
+Objectif : Vérifier la présence d’IPv6 et analyser les possibilités de communication ICMPv6 dans l’infrastructure.
+Méthode :
+- Vérifier l’attribution d’une adresse IPv6 sur un poste client.
+- Tester un ping ICMPv6 local (link-local).
+- Analyser la possibilité d’un ping ICMPv6 inter-division.
+
+Résultat attendu :
+- Une adresse IPv6 de type local (fe80::/10) est attribuée automatiquement car pas de réalisation d'un DHCP pour IPv6.
+- Le ping ICMPv6 local est possible.
+- Le ping ICMPv6 inter-division n’est pas possible en l’absence de routage IPv6 configuré.
+
+Résultat obtenu :
+- Adresse IPv6 local
+- Ping ICMPv6 local réussi
+- Ping inter-division pas possible avec le PC client de Landry sur une autre VLAN.
+
+Preuve :
+<img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/536842b1-d956-4a85-8634-0725fde17621" />  
+<img width="1056" height="290" alt="image" src="https://github.com/user-attachments/assets/93955166-643f-44c9-8f40-05e2be75784f" />  
+<img width="1051" height="253" alt="image" src="https://github.com/user-attachments/assets/ccdd5424-db93-4da6-89ba-d4e1518c6f4a" />  
   
-Résultat attendu :  
-- Les adresses IPv6 sont correctement attribuées
-- Les pings ICMPv6 aboutissent
-  
-Résultat obtenu :  
-Preuve :  
-Conclusion :  
+Conclusion :
+- IPv6 est présent de manière minimale (local uniquement).
+- Aucun adressage IPv6 global ni routage inter-VLAN IPv6 n’a été configuré.
+- Les communications IPv6 inter-divisions ne sont donc pas possibles dans l’état actuel.
   
 ## Test n°9 - Logs : 1 preuve ALLOW + 1 preuve BLOCK associées à vos règles
 Objectif : Vérifier la journalisation des règles firewall sur OPNsense.  
