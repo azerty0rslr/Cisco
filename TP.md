@@ -1,10 +1,10 @@
 # Organisation
 ## Rôle : 
-**MARKETING INTERNATIONNAL**  
-Chef de groupe - Camélia  
-Responsables clients et VLANs - Hermann et Yoann  
-Responsables routeur et documentation - Manon et Mohamed  
-Responsable switch et routeur - Landry  
+**GROUPE 4 - MARKETING INTERNATIONNAL**  
+Chef de groupe + responsable virtualisation - Camélia  
+Responsables recette & qualité - Hermann et Yoann  
+Responsables sécurité/OPNSense et documentation - Manon et Mohamed  
+Responsable réseau - Landry  
   
 # Jour 1
 ## Configuration des adressages IP  
