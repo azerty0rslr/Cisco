@@ -1,4 +1,5 @@
-<img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/41439914-cef0-42d5-9bdf-88332290a565" /># PV de recette
+<img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/41439914-cef0-42d5-9bdf-88332290a565" />
+# PV de recette
 
 ## Test n°1 - Client VLAN20 : DHCP OK + ping GW OK  
 Objectif : Vérifier que le client du VLAN20 obtient une configuration IP via DHCP et peut joindre sa passerelle par défaut.  
