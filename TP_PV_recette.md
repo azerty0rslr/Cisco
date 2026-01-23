@@ -1,4 +1,3 @@
-<img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/41439914-cef0-42d5-9bdf-88332290a565" />
 # PV de recette
 
 ## Test n°1 - Client VLAN20 : DHCP OK + ping GW OK  
@@ -142,6 +141,7 @@ Résultat obtenu :
 - Ping inter-division pas possible avec le PC client de Landry sur une autre VLAN.
 
 Preuve :
+<img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/41439914-cef0-42d5-9bdf-88332290a565" />
 <img width="932" height="201" alt="image" src="https://github.com/user-attachments/assets/536842b1-d956-4a85-8634-0725fde17621" />  
 <img width="1056" height="290" alt="image" src="https://github.com/user-attachments/assets/93955166-643f-44c9-8f40-05e2be75784f" />  
 <img width="1051" height="253" alt="image" src="https://github.com/user-attachments/assets/ccdd5424-db93-4da6-89ba-d4e1518c6f4a" />  
