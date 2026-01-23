@@ -5,15 +5,21 @@ Objectif : Vérifier que le client du VLAN20 obtient une configuration IP via DH
 Méthode :  
 - Connecter un poste client au VLAN20
 - Vérifier la configuration IP (ipconfig /all ou équivalent)
-- Tester la connectivité vers la passerelle avec un ping
+- Tester la connectivité vers la passerelle avec un ping  
   
 Résultat attendu :  
 - Le client obtient une adresse IP appartenant au réseau du VLAN20
 - La passerelle configurée correspond à l’IP de l’interface OPNsense du VLAN20
-- Le ping vers la passerelle est fonctionnel
+- Le ping vers la passerelle est fonctionnel  
   
 Résultat obtenu :  
+- Le client obtient bien une adresse IP sur la plage IP configuré avec le DHCP
+- On réussi bien a ping la passerelle  
+  
 Preuve :  
+<img width="873" height="190" alt="image" src="https://github.com/user-attachments/assets/d8cb3fc4-a1c5-4e65-9b1a-d401aa2993f6" />   
+<img width="834" height="280" alt="image" src="https://github.com/user-attachments/assets/b723b100-1a82-4ed2-90e6-e23df5c04822" />  
+  
 Conclusion :  
   
 ## Test n°2 - Client VLAN20 : DNS OK (résolution)
@@ -40,7 +46,11 @@ Résultat attendu :
 - La connexion HTTP/HTTPS est établie sans erreur
   
 Résultat obtenu :  
+- Le client arrive bien a ping le site web sans erreur
+
 Preuve :  
+<img width="1078" height="280" alt="image" src="https://github.com/user-attachments/assets/0844011a-6d00-4694-88a4-26ff69122942" />  
+  
 Conclusion :  
   
 ## Test n°4 - Client VLAN20 : accès VLAN10 interdit (preuve)
