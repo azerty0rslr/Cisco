@@ -214,17 +214,30 @@ Conclusion :
 Pas notre groupe  
   
 ## Test n°14 - Encapsulation/OSI (flux intranet)
-Objectif : Illustrer le modèle OSI à travers un flux HTTPS vers le portail intranet.  
+Objectif : Illustrer l’encapsulation des données réseau selon le modèle OSI lors d’un accès HTTPS vers le portail intranet.  
 Méthode :  
-- Capturer un flux réseau lors de l’accès au portail
-- Associer chaque couche observée au modèle OSI
+- Préparer la capture réseau sur un poste client (Wireshark ou équivalent).
+- Une fois le DNS inter-division et le routeur général configurés, accéder à https://intranet.ttb.local depuis un VLAN autorisé (ex : VLAN20 du G4).
+- Identifier les protocoles et associer chaque couche OSI observée :
+  - Couche 7 (Application) : HTTPS
+  - Couche 6 (Présentation) : chiffrement TLS
+  - Couche 5 (Session) : session TLS
+  - Couche 4 (Transport) : TCP/443
+  - Couche 3 (Réseau) : IPv4
+  - Couche 2 (Liaison) : Ethernet (MAC)
+  - Couche 1 (Physique) : transmission sur le lien Ethernet  
   
 Résultat attendu :  
-- Les différentes couches OSI sont identifiables dans la capture
+- Le flux HTTPS vers le portail intranet est observable et les différentes couches OSI identifiables.  
   
 Résultat obtenu :  
+- Non testé pour l’instant : le DNS inter-division n’est pas encore configuré, l’accès à intranet.ttb.local est restreint au G2.  
+  
 Preuve :  
+- À fournir après configuration du routeur général et DNS.  
+  
 Conclusion :  
+- Le test permettra de valider l’encapsulation OSI dès que l’accès inter-division sera possible. La méthode et l’analyse sont prêtes.  
   
 ## Test n°15 - Transport : capture DNS (UDP/53) + capture début HTTPS (TCP/443)
 Objectif : Vérifier les protocoles de transport utilisés par DNS et HTTPS.  
@@ -237,7 +250,13 @@ Résultat attendu :
 - HTTPS montre l’établissement TCP (SYN, SYN-ACK, ACK) sur le port 443
   
 Résultat obtenu :  
+- le DNS fonctionne bien
+- le HTTPS ne fonctionne pas (soit à cause du firewall soit à cause de la configuration du DNS non faite)
+
 Preuve :  
+<img width="1902" height="498" alt="image" src="https://github.com/user-attachments/assets/ef8fab5f-2f68-4731-acb0-062d209400e3" />  
+<img width="1525" height="443" alt="image" src="https://github.com/user-attachments/assets/980949b6-522d-4e82-bfa6-09c3c02bbd72" />  
+  
 Conclusion :  
   
 ## Test n°16 - Switching
