@@ -63,7 +63,11 @@ Résultat attendu :
 - Aucune réponse n’est reçue
   
 Résultat obtenu :  
+- Le client ne peut pas ping la VLAN10  
+
 Preuve :  
+<img width="810" height="232" alt="image" src="https://github.com/user-attachments/assets/fd2e9061-1994-4cc7-a42d-bb12941989c4" />  
+
 Conclusion :  
   
 ## Test n°5 - Client VLAN10 : accès admin OPNsense (HTTPS) OK
@@ -90,7 +94,13 @@ Résultat attendu :
 - Les accès vers les VLANs internes sont bloqués
   
 Résultat obtenu :  
+- Le client arrive bien a ping le site web sans erreur
+- Le client ne peut pas joindre les VLANs
+
 Preuve :  
+<img width="1027" height="276" alt="image" src="https://github.com/user-attachments/assets/0b9abb2e-0a5e-4877-91a1-afada83be7b3" />  
+
+
 Conclusion :  
   
 ## Test n°7 - Inter-divisions IPv4 : ping + traceroute vers 2 divisions
