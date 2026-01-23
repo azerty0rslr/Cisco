@@ -39,10 +39,9 @@ Sur le paramètrage mettre y (oui/yes) aux quatres questions, puis l'affichage s
 Puis on configure les adresses IP pour les interfaces :  
 <img width="901" height="543" alt="image" src="https://github.com/user-attachments/assets/25d34a74-f1ea-4d81-97b4-fffbd8f45bff" />  
   
-Il indique d'aller à l'adresse IP suivante : 192.168.1.98  
+Il indique d'aller à l'adresse IP suivante : 192.168.1.98 (root et opnsense). 
 <img width="597" height="492" alt="image" src="https://github.com/user-attachments/assets/e69e3a63-d6d6-4210-a894-ba7312116bf5" />  
   
-Les identifiants sont les mêmes que pour la VM (root et opnsense).  
 <img width="1820" height="825" alt="image" src="https://github.com/user-attachments/assets/cc97f62d-066b-45d4-a303-8020d9ed5816" />  
   
 Il manquait une autre carte réseaux pour faire la WAN. Nous l'avons donc ajouté puis redémarré, il y a désormais 2 adresses IP  
@@ -57,20 +56,18 @@ Au bout de 30min l'interface d'OPNsense crash avec l'erreur suivante :
 En effet, le groupe de Thomas et Nino sont connectés sur la même adresse IP. Nous sommes donc tout deux bloqués. Le groupe de Thomas a donc changé d'IP.  
 Autre erreur, Baptiste nous a communiqué que les groupes tournaient en live ISO et que par conséquent rien n'était sauvegardé, en effet en relançant la VM il n'y avait plus nos VLANs :  
 <img width="1458" height="526" alt="image" src="https://github.com/user-attachments/assets/de2399dc-0066-4606-a709-681d830b1732" />  
-
+  
 Une réinstallation a donc été effectuée avec l'iso mais pas en LIVE cette fois. Nous avons réinstaller grâce au tuto d'IT connect : https://www.it-connect.fr/tuto-installer-et-configurer-opnsense/   
-
   
 # Jour 3
 ## DHCP
 Nous configurons le DHCP dans Kea DHCP avec la doc suivante : https://www.zenarmor.com/docs/network-security-tutorials/how-to-setup-dhcp-server-on-opnsense  
 <img width="976" height="509" alt="image" src="https://github.com/user-attachments/assets/945911b9-6d3c-4bfd-999d-fa70060f8ca0" />  
 <img width="975" height="671" alt="image" src="https://github.com/user-attachments/assets/9af2b943-4620-423e-b28b-24ecc02b2696" />  
-
+  
 On configure aussi pour la LAN :  
 <img width="1522" height="907" alt="image" src="https://github.com/user-attachments/assets/4393371f-1040-41c6-b7bb-4d8bf348321e" />  
   
-
 ## VLANs
 Tout d'abord on créer les VLANs (pas oublier de faire apply) :  
 <img width="1771" height="780" alt="image" src="https://github.com/user-attachments/assets/1b501016-8caf-41a6-b15f-490ad93a3dfb" />  
@@ -79,7 +76,7 @@ Puis on paramètres les VLANs de la façon suivante :
 <img width="1812" height="718" alt="image" src="https://github.com/user-attachments/assets/9e784bbd-a99d-46ea-8a76-252e07493851" />  
 <img width="906" height="715" alt="image" src="https://github.com/user-attachments/assets/4012cbab-e0c5-4dd0-a38e-087e9dc94aea" />  
 Faire save et répéter l'opération pour les 4 VLANs.  
-
+  
 Des règles de firewall ont été définies sur chaque VLAN.  
 Le VLAN guest est isolé afin de valider le bon fonctionnement des règles de filtrage.  
 <img width="290" height="454" alt="image" src="https://github.com/user-attachments/assets/f5c09056-aafc-43fe-a5a2-9095731b0fa9" />  
@@ -96,7 +93,7 @@ On attribue a chaque vlan des ports du switch :
 En faisant ```show vlan ports 2``` on voit la vlan qui est attribué au port 2. Ainsi on vérifie tout les ports pour être sûr.  
 On configure le port 1 du switch en mode trunk afin de transporter les VLANs vers OPNsense (routeur).  
 <img width="684" height="441" alt="image" src="https://github.com/user-attachments/assets/72668832-cb66-4cbe-b1bc-48dcecb30e36" />  
-
+  
 # Jour 4
 Tout d'abord l'adresse IP a changé c'est désormais 10.30.0.20 :  
 <img width="911" height="543" alt="image" src="https://github.com/user-attachments/assets/544f552e-0a82-4de9-9fab-9ecdf1094279" />  
@@ -108,8 +105,10 @@ On a donc changé l'adresse IP LAN en faisant 2 sur la config :
 <img width="905" height="534" alt="image" src="https://github.com/user-attachments/assets/50b22b2a-211f-4879-9956-3ca2df712a6f" />  
   
 Suite à des problèmes (de carte réseau) on a dû réactiver les VLANs, puis remettre les règles firewall (voir la partie sur les VLANs du jour 3).  
-
+  
 ## Firewall (bis)
+Pour les paramètrages firewall on a opéré VLAN par VLAN sur OPNSense.  
+  
 ### VLAN Users
 Autoriser le DNS :  
 <img width="1374" height="670" alt="image" src="https://github.com/user-attachments/assets/e8d3e790-0a24-4cff-a5bc-49397035a680" />  
@@ -144,7 +143,7 @@ Il faudrait faire une règle pour autoriser le trafic avec le G2 mais nous ne le
 
 ## DHCP 
 Suite au changement d'adresse IP (passage de 192.168 à 10.100) nous devons refaire les plages IP du DHCP et l'activer.  
-
+  
 ### VLAN Admin
 <img width="1506" height="690" alt="image" src="https://github.com/user-attachments/assets/701a8e0b-3615-4a74-9322-85e1b14633af" />  
 
@@ -163,6 +162,10 @@ Voir le fichier markdown du même nom (TP_PV_recette.md).
 
 ## Routeur général
 Camélia a connecté les 4 groupes via un routeur général simple avec un OPNSense. Elle a monté les cartes réseaux sur la machine pour que tout soit lié.  
+En essayant de se connecter à OPNsense (192.168.1.1) on tombe de nouveau sur UniFI OS :  
+<img width="1525" height="760" alt="image" src="https://github.com/user-attachments/assets/2ebaacb9-ee68-442d-8369-ef1c6802d270" />  
+  
+Même solution qu'au jour 4, on change l'adresse IP.  
 
 ## Connecter routeur au switch
 Landry a configuré le trunck (transporte toutes les VLANs à partir d'un seul port).  
