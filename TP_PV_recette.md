@@ -164,6 +164,8 @@ Résultat attendu :
   
 Résultat obtenu :  
 Preuve :  
+<img width="1912" height="892" alt="image" src="https://github.com/user-attachments/assets/6c8b2556-8a0c-4528-ba28-594b53ab7d04" />
+
 Conclusion :  
   
 ## Test n°10 - Preuve L2 : ARP/MAC observé et expliqué (court)
@@ -286,10 +288,12 @@ Objectif : Vérifier que le plan d’adressage choisi est adapté au besoin.
 Méthode :  
 - Réaliser le calcul détaillé d’un sous-réseau (adresse réseau, broadcast, plage d’adresses, nombre d’hôtes)
 
-VLAN 20 - 10.100.4.64/26, pas de nombre d'employés précis dans la section marketing international. On sait simplement qu'il s'agit d'une PME/ETI (donc à moins de 600 employés) mais d'après chasefive.com et start.askwonder.com on compte environ 2 à 10% maximum d'employés dans le domaine du marketing sur une entreprise (PME/ETI). On va donc compter 50 employés MAXIMUM dans le secteur marketing de l'entreprise. 
-2^6 = 64 adresses
-
-
+L'adresse de la VLAN 20 est 10.100.4.64/26, il n'y a pas de nombre d'employés précis dans la section marketing international. On sait simplement qu'il s'agit d'une PME/ETI (donc à moins de 600 employés) mais d'après chasefive.com et start.askwonder.com on compte environ 2 à 10% maximum d'employés dans le domaine du marketing sur une entreprise (PME/ETI). On va donc compter 50 employés MAXIMUM dans le secteur marketing de l'entreprise.  
+Calcul du nombre d'adresses disponible : le masque réseau est en /26 donc 32-26=6 et 2^6=64 donc il y a 64 adresses  
+Broadcast (dernière adresse du sous-réseau) = 10.100.4.127  
+Plage d'adresses : 10.100.4.65 - 10.100.4.126 mais nous avons choisi comme plage d'adresses IP sur le DHCP de 10.100.4.70 à 10.100.4.120  
+Nombre d'hôtes : il y a donc 64 adresses, on en retire 2 (broadcast + subnet) pour obtenir le nombre d'hôtes utilisables soit 62. Avec le DHCP on a gardé uniquement 50 adresses mais c'est normalement largement suffisant pour les users du service marketing.  
+  
 Conclusion :  
 
 
