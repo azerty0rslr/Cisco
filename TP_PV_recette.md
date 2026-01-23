@@ -250,8 +250,8 @@ Résultat attendu :
 - HTTPS montre l’établissement TCP (SYN, SYN-ACK, ACK) sur le port 443
   
 Résultat obtenu :  
-- le DNS fonctionne bien
-- le HTTPS ne fonctionne pas (soit à cause du firewall soit à cause de la configuration du DNS non faite)
+- le DNS essaye de trouver un lien mais n'y parvient pas
+- le HTTPS ne fonctionne pas (soit à cause du firewall soit à cause de la configuration du DNS non faite)  
 
 Preuve :  
 <img width="1902" height="498" alt="image" src="https://github.com/user-attachments/assets/ef8fab5f-2f68-4731-acb0-062d209400e3" />  
@@ -269,18 +269,28 @@ Résultat attendu :
 - Les adresses MAC sont correctement apprises par le switch
   
 Résultat obtenu :  
+- Le switch apprend correctement les adresses MAC sur les ports où les PC sont connectés
+- On observe que les requêtes ARP sont des broadcast 
+  
 Preuve :  
+<img width="500" height="314" alt="image" src="https://github.com/user-attachments/assets/4ba2fd1a-3493-4573-ad1f-d190f7544458" />  
+<img width="482" height="276" alt="image" src="https://github.com/user-attachments/assets/f614fe14-53d0-46c6-8465-219f0d6be5c9" />  
+<img width="1263" height="467" alt="image" src="https://github.com/user-attachments/assets/ad981143-ae44-4eb8-b33b-bf33d6bf0a3d" />
+
 Conclusion :  
+- Collision domain : Segment de réseau où deux appareils peuvent provoquer une collision en envoyant des trames en même temps (lié aux hubs ou ports non full-duplex)  
+- Broadcast domain : Segment de réseau où un broadcast est reçu par tous les appareils
   
 ## Test n°17 - Subnetting
 Objectif : Vérifier que le plan d’adressage choisi est adapté au besoin.  
 Méthode :  
 - Réaliser le calcul détaillé d’un sous-réseau (adresse réseau, broadcast, plage d’adresses, nombre d’hôtes)
-  
-Résultat attendu :  
-- Le sous-réseau couvre le nombre d’hôtes requis
-  
-Résultat obtenu :  
-Preuve :  
+
+VLAN 20 - 10.100.4.64/26, pas de nombre d'employés précis dans la section marketing international. On sait simplement qu'il s'agit d'une PME/ETI (donc à moins de 600 employés) mais d'après chasefive.com et start.askwonder.com on compte environ 2 à 10% maximum d'employés dans le domaine du marketing sur une entreprise (PME/ETI). On va donc compter 50 employés MAXIMUM dans le secteur marketing de l'entreprise. 
+2^6 = 64 adresses
+
+
 Conclusion :  
+
+
   
