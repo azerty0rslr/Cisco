@@ -168,16 +168,21 @@ Conclusion :
   
 ## Test n°10 - Preuve L2 : ARP/MAC observé et expliqué (court)
 Objectif : Vérifier le fonctionnement de la résolution ARP et des adresses MAC au niveau 2.  
-Méthode :  
-- Afficher la table ARP ou la table MAC
-- Identifier une correspondance IP/MAC
+Méthode :
+- Envoi d’un ping vers la passerelle du VLAN afin de générer une requête ARP.
+- Affichage de la table ARP depuis le poste client.  
   
 Résultat attendu :  
-- Les associations IP/MAC sont visibles et cohérentes
+- Une correspondance IP/MAC est présente dans la table ARP.  
   
 Résultat obtenu :  
+- Une entrée ARP est observée pour la passerelle.  
+  
 Preuve :  
+<img width="738" height="294" alt="image" src="https://github.com/user-attachments/assets/d4a81409-312d-448b-ad5d-45929360033b" />  
+  
 Conclusion :  
+- La résolution ARP fonctionne correctement donc fonctionnement de la couche 2.  
   
 ## Test n°11 - Preuve routage : show ip route expliqué (au moins 5 lignes)
 Objectif : Vérifier et comprendre la table de routage du routeur ou du firewall.  
@@ -200,21 +205,13 @@ Méthode :
 Résultat attendu :  
 - Le portail intranet est accessible depuis G1 et G4
   
-Résultat obtenu :  
+Résultat obtenu : le DNS ne fait pas le lien avec intranet.ttb.local, après communication avec le G2 intranet.ttb.local est disponible uniquement pour le G2 à cause de leurs règles de parefeu. On doit attendre que le routeur général et son DNS soient configurés avant de réussir.  
+
 Preuve :  
 Conclusion :  
   
 ## Test n°13 - Flux imposé : depuis G3, accès au portail intranet.ttb.local KO
-Objectif : Vérifier que l’accès au portail intranet est interdit depuis G3.  
-Méthode :  
-- Depuis une machine de G3, tenter d’accéder au portail intranet
-  
-Résultat attendu :  
-- L’accès est bloqué
-  
-Résultat obtenu :  
-Preuve :  
-Conclusion :  
+Pas notre groupe  
   
 ## Test n°14 - Encapsulation/OSI (flux intranet)
 Objectif : Illustrer le modèle OSI à travers un flux HTTPS vers le portail intranet.  
