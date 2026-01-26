@@ -18,7 +18,7 @@ Après avoir eu beaucoup de problèmes à l'installation (avec la carte réseau,
 <img width="1352" height="743" alt="image" src="https://github.com/user-attachments/assets/82628f8a-a7d0-4be7-bff1-88c672a8eefd" />  
 
 Grâce au tuto suivant https://shape.host/resources/comment-installer-prometheus-sur-debian-12, nous installons Prometheus :  
- <img width="1243" height="519" alt="image" src="https://github.com/user-attachments/assets/ba4c692a-3cd8-49d0-9a71-2b7766f92765" />  
+<img width="1346" height="752" alt="image" src="https://github.com/user-attachments/assets/9ae38c3d-8648-489c-a06b-95fd9bbb9f1e" />  
 
 Et voilà, Prometheus est installé !  
-<img width="1346" height="752" alt="image" src="https://github.com/user-attachments/assets/9ae38c3d-8648-489c-a06b-95fd9bbb9f1e" />
+
