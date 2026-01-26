@@ -18,7 +18,15 @@ Après avoir eu beaucoup de problèmes à l'installation (avec la carte réseau,
 <img width="1352" height="743" alt="image" src="https://github.com/user-attachments/assets/82628f8a-a7d0-4be7-bff1-88c672a8eefd" />  
 
 Grâce au tuto suivant https://shape.host/resources/comment-installer-prometheus-sur-debian-12, nous installons Prometheus :  
+Prometheus : http://10.30.0.130:9090  
 <img width="1346" height="752" alt="image" src="https://github.com/user-attachments/assets/9ae38c3d-8648-489c-a06b-95fd9bbb9f1e" />  
-
+  
 Et voilà, Prometheus est installé !  
 
+## Installation de Grafana
+On installe Grafana (chatGPT goat car Debian Trexis donc pas les mêmes commandes que sur les docs internet).  
+Grafana : http://10.30.0.130:3000 - login et password : admin et admin123  
+<img width="1313" height="779" alt="image" src="https://github.com/user-attachments/assets/aa9338d7-fd53-426a-80cf-d09efe2d6578" />  
+<img width="1919" height="919" alt="image" src="https://github.com/user-attachments/assets/68d7f70a-211e-4744-b5d7-68a20af7321b" />  
+
+Et voilà, Grafana est installé !
