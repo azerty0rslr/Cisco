@@ -59,9 +59,20 @@ Dans Explore de Grafana on fixe une fenêtre d’1h. Les résultats donnent une 
 <img width="1012" height="207" alt="image" src="https://github.com/user-attachments/assets/76750d4e-d1d4-4a8e-8a1c-9b98e6ce1549" />  
 <img width="1017" height="226" alt="image" src="https://github.com/user-attachments/assets/b468a8d7-7bc8-4d59-ab85-07620422d54e" />  
 
+## Installation de Blackbox Exporter 
+Blackbox mesure l’état des services vus par l’utilisateur.  
+--------------------------------fzgfq
+On test l'installation de Blackbox :  
+<img width="921" height="598" alt="image" src="https://github.com/user-attachments/assets/444c88c1-269d-40f5-9eaa-780620575c91" />  
   
+Blackbox est bien installé sur http://10.30.0.130:9115/ :  
+<img width="904" height="539" alt="image" src="https://github.com/user-attachments/assets/1ee7c46c-1ca1-4c68-94c6-1da01a7025d6" />  
 
-
-
-
+Retourner sur Prometheus pour vérifier si Blackbox a été ajouté :  
+<img width="1251" height="636" alt="image" src="https://github.com/user-attachments/assets/d4c7ecee-6542-4c87-951f-1e61019cd8f2" />  
+  
+Le serveur de supervision est positionné dans le LAN 10.30.0.0/24 avec une passerelle par défaut 10.30.0.254.  
+Hors on essaye de joindre 192.168.20.1 qui appartient à un réseau distinct, non routé depuis le LAN de supervision.  
+Donc les tests ICMP effectués par Blackbox échouent et probe_success remonte 0.  
+<img width="1101" height="175" alt="image" src="https://github.com/user-attachments/assets/7f2aea6b-7468-4743-a802-05d72e094bf2" />  
 
