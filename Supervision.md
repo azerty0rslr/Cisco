@@ -36,4 +36,32 @@ Et voilà, Grafana est installé !
 On suit le lien suivant pour installer Node Exporter : https://prometheus.io/docs/guides/node-exporter/  
 <img width="913" height="609" alt="image" src="https://github.com/user-attachments/assets/6f5bbda8-2953-4e02-b86e-38e53b085b42" />  
 
+# Jour 2
+## Lier Grafana et Prometheus
+Dans Grafana aller dans Connections > Data Sources > Add Data Source et ajouter Prometheus :  
+<img width="1265" height="641" alt="image" src="https://github.com/user-attachments/assets/1c83840b-40dc-4084-ad5b-0ed67664dcfc" />  
+  
+Descendre jusqu'à Connection et remplir avec l'URL de Prometheus (ici http://10.30.0.130:9090)
+<img width="1270" height="707" alt="image" src="https://github.com/user-attachments/assets/88bfc281-36fb-4154-8764-7d06855842b9" />
+  
+Puis faire Save & Test tout en bas de la page.  
+Ensuite on importe le Dashboard, faire Import Dashboard, dans l'ID mettre (BGAOYRE9HGUFHRE) - ici 1860 :  
+<img width="1226" height="678" alt="image" src="https://github.com/user-attachments/assets/4c6bd196-7fd2-418c-9a6a-01e0c08bd658" />  
+
+Faire Load puis remplir la section ou la laisser par défaut et faire Import (ici on l'avait déjà importé avant la capture) :  
+<img width="833" height="470" alt="image" src="https://github.com/user-attachments/assets/443b2238-10f9-4537-ad18-d0cde8023c23" />  
+  
+On est directement redirigé vers le Dashboard qu'on vient d'importer via Node exporter et Prometheus :  
+<img width="1249" height="695" alt="image" src="https://github.com/user-attachments/assets/05e5aad4-86cf-46e8-b3e8-d5d9b5dc716d" />  
+  
+Dans Explore de Grafana on fixe une fenêtre d’1h. Les résultats donnent une valeur de 1 pour les jobs prometheus et node_exporter, donc le serveur Prometheus est opérationnel et collecte correctement les données.  
+<img width="1233" height="479" alt="image" src="https://github.com/user-attachments/assets/cd375e76-28ab-486e-81c9-4c1434655eef" />  
+<img width="1012" height="207" alt="image" src="https://github.com/user-attachments/assets/76750d4e-d1d4-4a8e-8a1c-9b98e6ce1549" />  
+<img width="1017" height="226" alt="image" src="https://github.com/user-attachments/assets/b468a8d7-7bc8-4d59-ab85-07620422d54e" />  
+
+  
+
+
+
+
 
