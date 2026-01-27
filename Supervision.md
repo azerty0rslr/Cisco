@@ -88,3 +88,28 @@ Nous essayons de joindre `192.168.20.1`, qui appartient à un réseau non routé
 Les tests ICMP effectués par Blackbox échouent donc et `probe_success` remonte à 0 :  
 <img width="1101" height="175" alt="image" src="https://github.com/user-attachments/assets/7f2aea6b-7468-4743-a802-05d72e094bf2" />  
   
+## Configuration d'alertes
+1. WAN interface DOWN  
+<img width="1484" height="835" alt="image" src="https://github.com/user-attachments/assets/103a7731-7403-4ed6-82d3-ce8aeb69b30c" />  
+  
+2. Errors/Discards anormaux  
+- CPU haute  
+<img width="1465" height="870" alt="image" src="https://github.com/user-attachments/assets/fad55fd9-7d0d-409c-9700-121c3e1a71b4" />
+  
+- RAM haute  
+<img width="1470" height="878" alt="image" src="https://github.com/user-attachments/assets/1011983e-4745-46d4-acef-5a09e895f21f" />  
+  
+4. GW VLAN20 DOWN  
+<img width="1476" height="825" alt="image" src="https://github.com/user-attachments/assets/945448ce-017e-44d9-95be-a3203771a260" />  
+  
+5. DNS KO  
+<img width="1486" height="831" alt="image" src="https://github.com/user-attachments/assets/84a6be87-821b-4642-90c9-1167e0611d4f" />  
+  
+6. HTTPS intranet KO  
+<img width="1253" height="553" alt="image" src="https://github.com/user-attachments/assets/43673098-a03e-4adb-b8b2-7d3571fa99e2" />  
+  
+7. Admin OPNsense KO
+
+Voici le résultat final avec les alertes fonctionnelles (sauf 2 qui n'ont pas de data) :  
+<img width="1495" height="886" alt="image" src="https://github.com/user-attachments/assets/55ff630d-ef28-4b95-a8ef-a8ae132ef5f7" />  
+
