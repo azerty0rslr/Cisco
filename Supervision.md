@@ -119,11 +119,39 @@ Voici le résultat final avec les alertes fonctionnelles (sauf 2 qui n'ont pas d
   
 Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Une incohérence dans l’architecture physique a été identifiée : le switch du groupe n’était pas relié directement à la carte réseau du serveur hébergeant l’ESXi utilisé pour les machines virtuelles. Cette configuration empêchait toute segmentation VLAN fonctionnelle. Une correction de l’interconnexion physique est nécessaire avant la poursuite du TP.  
   
-# Jour 3 - étape 1 correction
-## Configuration correcte du switch 
-```
+# Jour 3 – Étape 1 : Correction et validation de la supervision
+## Contexte
+Lors de la mise en place de la supervision réseau, plusieurs dysfonctionnements ont été rencontrés, principalement liés à la configuration du firewall OPNsense.  
+Des règles trop restrictives ont bloqué l’accès aux services de supervision ainsi qu’à l’interface d’administration d’OPNsense, rendant toute correction impossible.
+
+Après diagnostic avec l’enseignante, la décision a été prise de **réinitialiser OPNsense**, puis de **simplifier l’architecture de supervision** afin de garantir une solution fonctionnelle et stable.
+
+---
+
+## Décision technique finale
+Afin de valider l’étape 1 du projet tout en limitant la complexité, il a été décidé de :
+- ❌ Ne pas superviser les VLANs
+- ❌ Ne pas superviser OPNsense
+- ✅ Superviser uniquement le **switch physique du LAN**
+
+Cette approche permet de répondre pleinement aux objectifs pédagogiques de l’étape 1 (collecte de métriques réseau, visualisation et alertes) tout en évitant les problèmes liés au routage et aux règles de firewall.
+
+---
+
+## Configuration correcte du switch
+La supervision du switch repose sur le protocole **SNMP (Simple Network Management Protocol)**.
+
+### Activation de SNMP sur le switch
+Configuration minimale appliquée sur le switch :
+
+```bash
 snmp-server community public
 snmp-server enable
-```
 
-WAN + LAN + 2 VLAN + règles de firewall autorisant tout
+
+1. Activer SNMP sur le switch
+2. Installer SNMP sur l'ESXi
+3. Reconfigurer Prometheus
+4. Vérification
+5. Dashboard fonctionnel
+6. Reparamétrer les alertes
