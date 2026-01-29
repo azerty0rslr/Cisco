@@ -147,7 +147,7 @@ Configuration minimale appliquée sur le switch :
 ```bash
 snmp-server community public
 snmp-server enable
-
+```
 
 1. Activer SNMP sur le switch
 2. Installer SNMP sur l'ESXi
