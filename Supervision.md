@@ -119,4 +119,9 @@ Voici le résultat final avec les alertes fonctionnelles (sauf 2 qui n'ont pas d
   
 Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Une incohérence dans l’architecture physique a été identifiée : le switch du groupe n’était pas relié directement à la carte réseau du serveur hébergeant l’ESXi utilisé pour les machines virtuelles. Cette configuration empêchait toute segmentation VLAN fonctionnelle. Une correction de l’interconnexion physique est nécessaire avant la poursuite du TP.  
   
-# Jour 3 - étape 2
+# Jour 3 - étape 1 correction
+## Configuration correcte du switch 
+```
+snmp-server community public
+snmp-server enable
+```
