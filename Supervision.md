@@ -126,4 +126,4 @@ snmp-server community public
 snmp-server enable
 ```
 
-WAN + LAN + 2 VLAN 
+WAN + LAN + 2 VLAN + règles de firewall autorisant tout
