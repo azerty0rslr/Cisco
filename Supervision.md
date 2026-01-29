@@ -125,3 +125,5 @@ Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN
 snmp-server community public
 snmp-server enable
 ```
+
+WAN + LAN + 2 VLAN 
