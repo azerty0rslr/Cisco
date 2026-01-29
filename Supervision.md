@@ -1,4 +1,4 @@
-# Jour 1
+# Jour 1 - étape 1
 ## Création de la VM de supervision
 Tout d'abord, nous avons créé une VM dédiée à la supervision, qui contiendra Prometheus et Grafana :  
 <img width="1191" height="714" alt="image" src="https://github.com/user-attachments/assets/e5b4b53a-3676-4cb5-8f16-f37549a04a9d" />  
@@ -45,7 +45,7 @@ Nous suivons la documentation officielle : https://prometheus.io/docs/guides/nod
 
 ---
 
-# Jour 2
+# Jour 2 - étape 1
 ## Lier Grafana et Prometheus
 Dans Grafana : `Connections > Data Sources > Add Data Source` et ajouter Prometheus :  
 <img width="1265" height="641" alt="image" src="https://github.com/user-attachments/assets/1c83840b-40dc-4084-ad5b-0ed67664dcfc" />  
@@ -89,6 +89,8 @@ Les tests ICMP effectués par Blackbox échouent donc et `probe_success` remonte
 <img width="1101" height="175" alt="image" src="https://github.com/user-attachments/assets/7f2aea6b-7468-4743-a802-05d72e094bf2" />  
   
 ## Configuration d'alertes
+Les alertes permettent de détecter les incidents critiques (perte de connectivité, surcharge, indisponibilité d'un service).  
+  
 1. WAN interface DOWN  
 <img width="1484" height="835" alt="image" src="https://github.com/user-attachments/assets/103a7731-7403-4ed6-82d3-ce8aeb69b30c" />  
   
@@ -99,17 +101,22 @@ Les tests ICMP effectués par Blackbox échouent donc et `probe_success` remonte
 - RAM haute  
 <img width="1470" height="878" alt="image" src="https://github.com/user-attachments/assets/1011983e-4745-46d4-acef-5a09e895f21f" />  
   
-4. GW VLAN20 DOWN  
+3. GW VLAN20 DOWN  
 <img width="1476" height="825" alt="image" src="https://github.com/user-attachments/assets/945448ce-017e-44d9-95be-a3203771a260" />  
   
-5. DNS KO  
+4. DNS KO  
+L'alerte ne remonte pas encore de données en raison d’un paramétrage à ajuster.  
 <img width="1486" height="831" alt="image" src="https://github.com/user-attachments/assets/84a6be87-821b-4642-90c9-1167e0611d4f" />  
   
-6. HTTPS intranet KO  
+5. HTTPS intranet KO  
+L'alerte ne remonte pas encore de données en raison d’un paramétrage à ajuster.  
 <img width="1253" height="553" alt="image" src="https://github.com/user-attachments/assets/43673098-a03e-4adb-b8b2-7d3571fa99e2" />  
   
-7. Admin OPNsense KO
-
+6. Admin OPNsense KO  
+  
 Voici le résultat final avec les alertes fonctionnelles (sauf 2 qui n'ont pas de data) :  
 <img width="1495" height="886" alt="image" src="https://github.com/user-attachments/assets/55ff630d-ef28-4b95-a8ef-a8ae132ef5f7" />  
-
+  
+Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Les configurations de supervision ont été réalisées sur le serveur central du projet. La configuration du switch et des VLANs n’a pas encore été effectuée et sera effectuée par Landry.  
+  
+# Jour 3 - étape 2
