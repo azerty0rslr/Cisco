@@ -117,6 +117,6 @@ L'alerte ne remonte pas encore de données en raison d’un paramétrage à ajus
 Voici le résultat final avec les alertes fonctionnelles (sauf 2 qui n'ont pas de data) :  
 <img width="1495" height="886" alt="image" src="https://github.com/user-attachments/assets/55ff630d-ef28-4b95-a8ef-a8ae132ef5f7" />  
   
-Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Les configurations de supervision ont été réalisées sur le serveur central du projet. La configuration du switch et des VLANs n’a pas encore été effectuée et sera effectuée par Landry.  
+Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Une incohérence dans l’architecture physique a été identifiée : le switch du groupe n’était pas relié directement à la carte réseau du serveur hébergeant l’ESXi utilisé pour les machines virtuelles. Cette configuration empêchait toute segmentation VLAN fonctionnelle. Une correction de l’interconnexion physique est nécessaire avant la poursuite du TP.  
   
 # Jour 3 - étape 2
