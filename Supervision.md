@@ -75,7 +75,6 @@ Dans **Explore** de Grafana, nous fixons une fenêtre d’une heure. Les résult
 
 ## Installation de Blackbox Exporter
 Blackbox Exporter mesure l’état des services vus par l’utilisateur.  
---------------------------------fzgfq
 On test l'installation de Blackbox :  
 <img width="921" height="598" alt="image" src="https://github.com/user-attachments/assets/444c88c1-269d-40f5-9eaa-780620575c91" />  
   
