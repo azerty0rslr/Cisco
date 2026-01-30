@@ -183,7 +183,10 @@ Or après avoir installé toutes les librairies nécessaires et essayé de le la
   
 <img width="905" height="493" alt="image" src="https://github.com/user-attachments/assets/182e1b22-4466-4803-981f-8171a39db1ff" />  
 
-Après avoir essayé de différentes manière on identifie un problème, il y a l'air d'y avoir une incompatibilité entre le generator et la version de Go installée (surement nécessaire d'avoir Go 1.20 ou 1.21 pour compiler). Nous réessayons donc avec Go 1.20.1 mais l'erreur perciste :  
-<img width="912" height="505" alt="image" src="https://github.com/user-attachments/assets/5d64f808-f594-4d60-9440-0e00cc620120" />  
+Après avoir essayé de différentes manière on identifie un problème, il y a l'air d'y avoir une incompatibilité entre le generator et la version de Go installée (surement nécessaire d'avoir Go 1.20 ou 1.21 pour compiler). Nous réessayons donc avec Go 1.20.1 mais l'erreur perciste, il demande une version encore différente :  
+<img width="908" height="95" alt="image" src="https://github.com/user-attachments/assets/424a4040-18e8-4059-b289-4ff1f5922403" />  
+  
+Nous changeons donc ENCORE de version, mais les erreurs persistes sur l'installation :  
+<img width="871" height="381" alt="image" src="https://github.com/user-attachments/assets/6e08741e-1a3b-4f3d-a4c6-acf88a19e88a" />  
   
 Nous sommes donc bloqués.
