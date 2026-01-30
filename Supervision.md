@@ -188,5 +188,11 @@ Après avoir essayé de différentes manière on identifie un problème, il y a 
   
 Nous changeons donc ENCORE de version, mais les erreurs persistes sur l'installation :  
 <img width="871" height="381" alt="image" src="https://github.com/user-attachments/assets/6e08741e-1a3b-4f3d-a4c6-acf88a19e88a" />  
+
+Après un échange avec ChatGPT, la version de GO n'est pas compatible et lorsqu'on essayait avec une version antérieure il prenait automatiquement la dernière version de GO. Notre invocation du gnerator était mauvaise, il fallait faire ```go run . generate```.  
+Il nous a recommandé d'autres installations de librairies : CGO (net-snmp qui devait sûrement être mal installé), contrib, compilateur C.  
+Après avoir effectué toutes les modifications nous avons enfin un fichier snmp.yml fonctionnel !  
   
-Nous sommes donc bloqués.
+<img width="953" height="617" alt="image" src="https://github.com/user-attachments/assets/18f19e05-dae1-4c61-bb16-6b19a91b3eb9" />  
+
+
