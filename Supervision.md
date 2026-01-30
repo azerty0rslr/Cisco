@@ -162,7 +162,7 @@ snmp_exporter --config.file=snmp.yml
 
 Tests SNMP :
 ```
-snmpwalk -v1 -cpublic 10.100.4.254 sysName
+snmpwalk -v1 -cpublic 10.100.4.254 
 ```
   
 On récolte un MIB complet du switch.  
