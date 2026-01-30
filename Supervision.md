@@ -160,3 +160,91 @@ snmp-server enable
 MIB 
 <img width="897" height="497" alt="image" src="https://github.com/user-attachments/assets/bfe21531-31b4-4400-93be-eb472140d473" />
 
+
+
+# Correction
+# Jour 3 – Correction de l’étape 1 et reprise de la supervision
+Lors des vérifications de l’étape 1, plusieurs incohérences ont été identifiées dans l’architecture réseau.
+La machine OPNsense était mal configurée, notamment au niveau des règles de firewall, ce qui bloquait totalement les communications entre les différents réseaux et empêchait la supervision correcte des équipements. L’accès à OPNsense était devenu impossible malgré plusieurs tentatives de redémarrage.
+  
+- Nous avons donc redémarré et essayé de réinitialiser OPNsense.  
+- On a procédé à la vérification des interfaces réseau (WAN / LAN).  
+- Corrigé le blocage lié aux règles de firewall  
+  
+Finalement nous avons décidé d'abandonner les VLANs et les règles de firewall pour se concentrer sur la supervision du switch.  
+  
+## Configuration du switch
+Activation de SNMP sur le switch afin de permettre la supervision :  
+```
+snmp-server community public
+snmp-server enable
+```
+  
+On a ensuite redémarré le switch pour vérifier l'application de la configuration.  
+  
+# Jour 4 – Supervision SNMP du switch
+## Installation de SNMP Exporter
+Afin de superviser le switch via SNMP avec Prometheus, nous avons installé SNMP Exporter sur la VM de supervision (MON1).
+
+Téléchargement et installation manuelle :
+
+cd /tmp
+wget https://github.com/prometheus/snmp_exporter/releases/download/v0.30.1/snmp_exporter-0.30.1.linux-amd64.tar.gz
+tar xvf snmp_exporter-0.30.1.linux-amd64.tar.gz
+cd snmp_exporter-0.30.1.linux-amd64
+cp snmp_exporter /usr/local/bin/
+
+
+Lancement manuel pour vérification :
+
+snmp_exporter --config.file=snmp.yml
+
+
+SNMP Exporter écoute correctement sur le port 9116.
+
+Installation des outils SNMP
+
+Installation du client SNMP :
+
+apt update
+apt install snmp -y
+
+
+⚠️ Le paquet snmp-mibs-downloader n’est pas disponible sous Debian Trixie.
+Les MIBs ne sont donc pas installées, ce qui empêche l’utilisation des noms symboliques (ex. sysName, ifDescr).
+
+Tests SNMP
+
+Les commandes SNMP avec noms symboliques échouent :
+
+snmpwalk -v2c -c public 10.100.4.254 sysName
+
+
+Cela est normal en l’absence de MIBs.
+
+Les tests SNMP sont donc réalisés à l’aide d’OIDs numériques, ce qui reste parfaitement compatible avec Prometheus et SNMP Exporter.
+
+Intégration avec Prometheus
+
+SNMP Exporter est destiné à être interrogé par Prometheus via l’endpoint HTTP :
+
+http://localhost:9116/snmp?module=if_mib&target=10.100.4.254
+
+
+Cette configuration permet de collecter :
+
+L’état des interfaces
+
+Le trafic entrant/sortant
+
+Les erreurs et pertes sur les ports du switch
+
+Résultat
+
+SNMP activé et fonctionnel sur le switch
+
+SNMP Exporter installé et opérationnel
+
+Supervision recentrée sur un périmètre stable et maîtrisé
+
+Base prête pour l’affichage des métriques dans Grafana et la reconfiguration des alertes
