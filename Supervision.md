@@ -195,4 +195,12 @@ Après avoir effectué toutes les modifications nous avons enfin un fichier snmp
   
 <img width="953" height="617" alt="image" src="https://github.com/user-attachments/assets/18f19e05-dae1-4c61-bb16-6b19a91b3eb9" />  
 
+## Suite (en théorie car plus le temps)
+Nous avons ensuite rapidement modifié generator.yml avec les infos que l'on souhaite monitorer, on aurait ensuite dû regénéré le fichier snmp.yml mais il y a encore eu un problème avec go que nous n'avions pas le temps de résoudre :  
+  
+<img width="927" height="610" alt="image" src="https://github.com/user-attachments/assets/c298bf79-47e5-434f-bed3-364d5febe62f" />  
+  
+Une fois corrigé, on aurait ensuite lancé snmp_exporter et son interface web (en 10.100.4.50:9116). Ensuite on aurait eu à lier Prometheus puis Grafana pour le dashboard et pour finir on aurait remis les alertes.  
 
+## RETEX
+Nous avons trouvé le TP difficile mais très enrichissant, car clairement au-dessus de notre niveau actuel. Grâce au TP nous avons appris beaucoup de choses, mais nous avons aussi mis rudement notre patience à l’épreuve. Il faudrait peut-être ajouter une séance de cours supplémentaire ou accorder plus de temps à la partie supervision bien que difficile car il manquait également du temps sur le module Cisco. Mis à part cela, le TP était très intéressant.  
