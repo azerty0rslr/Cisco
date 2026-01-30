@@ -155,3 +155,8 @@ snmp-server enable
 4. Vérification
 5. Dashboard fonctionnel
 6. Reparamétrer les alertes
+
+# Jour 4 - étape 1
+MIB 
+<img width="897" height="497" alt="image" src="https://github.com/user-attachments/assets/bfe21531-31b4-4400-93be-eb472140d473" />
+
