@@ -1,4 +1,4 @@
-# Jour 1 - étape 1
+# Jour 1
 ## Création de la VM de supervision
 Tout d'abord, nous avons créé une VM dédiée à la supervision, qui contiendra Prometheus et Grafana :  
 <img width="1191" height="714" alt="image" src="https://github.com/user-attachments/assets/e5b4b53a-3676-4cb5-8f16-f37549a04a9d" />  
@@ -45,7 +45,9 @@ Nous suivons la documentation officielle : https://prometheus.io/docs/guides/nod
 
 ---
 
-# Jour 2 - étape 1
+
+  
+# Jour 2
 ## Lier Grafana et Prometheus
 Dans Grafana : `Connections > Data Sources > Add Data Source` et ajouter Prometheus :  
 <img width="1265" height="641" alt="image" src="https://github.com/user-attachments/assets/1c83840b-40dc-4084-ad5b-0ed67664dcfc" />  
@@ -117,54 +119,12 @@ L'alerte ne remonte pas encore de données en raison d’un paramétrage à ajus
 Voici le résultat final avec les alertes fonctionnelles (sauf 2 qui n'ont pas de data) :  
 <img width="1495" height="886" alt="image" src="https://github.com/user-attachments/assets/55ff630d-ef28-4b95-a8ef-a8ae132ef5f7" />  
   
-Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Une incohérence dans l’architecture physique a été identifiée : le switch du groupe n’était pas relié directement à la carte réseau du serveur hébergeant l’ESXi utilisé pour les machines virtuelles. Cette configuration empêchait toute segmentation VLAN fonctionnelle. Une correction de l’interconnexion physique est nécessaire avant la poursuite du TP.  
+Grâce à l'étape 1, nous avons désormais une supervision fonctionnelle du LAN via Prometheus et Grafana, on dispose d'une visibilité sur l’état des clients, services et interfaces du réseau, ainsi que d'un système d’alertes pour les incidents (surtout sur les incidents graves). Une incohérence dans l’architecture physique a été identifiée : le switch du groupe n’était pas relié directement à la carte réseau du serveur hébergeant l’ESXi utilisé pour les machines virtuelles. Une correction de l’architecture réseau est nécessaire avant la poursuite du TP.  
+
+
   
-# Jour 3 – Étape 1 : Correction et validation de la supervision
-## Contexte
-Lors de la mise en place de la supervision réseau, plusieurs dysfonctionnements ont été rencontrés, principalement liés à la configuration du firewall OPNsense.  
-Des règles trop restrictives ont bloqué l’accès aux services de supervision ainsi qu’à l’interface d’administration d’OPNsense, rendant toute correction impossible.
-
-Après diagnostic avec l’enseignante, la décision a été prise de **réinitialiser OPNsense**, puis de **simplifier l’architecture de supervision** afin de garantir une solution fonctionnelle et stable.
-
----
-
-## Décision technique finale
-Afin de valider l’étape 1 du projet tout en limitant la complexité, il a été décidé de :
-- ❌ Ne pas superviser les VLANs
-- ❌ Ne pas superviser OPNsense
-- ✅ Superviser uniquement le **switch physique du LAN**
-
-Cette approche permet de répondre pleinement aux objectifs pédagogiques de l’étape 1 (collecte de métriques réseau, visualisation et alertes) tout en évitant les problèmes liés au routage et aux règles de firewall.
-
----
-
-## Configuration correcte du switch
-La supervision du switch repose sur le protocole **SNMP (Simple Network Management Protocol)**.
-
-### Activation de SNMP sur le switch
-Configuration minimale appliquée sur le switch :
-
-```bash
-snmp-server community public
-snmp-server enable
-```
-
-1. Activer SNMP sur le switch
-2. Installer SNMP sur l'ESXi
-3. Reconfigurer Prometheus
-4. Vérification
-5. Dashboard fonctionnel
-6. Reparamétrer les alertes
-
-# Jour 4 - étape 1
-MIB 
-<img width="897" height="497" alt="image" src="https://github.com/user-attachments/assets/bfe21531-31b4-4400-93be-eb472140d473" />
-
-
-
-# Correction
 # Jour 3 – Correction de l’étape 1 et reprise de la supervision
-Lors des vérifications de l’étape 1, plusieurs incohérences ont été identifiées dans l’architecture réseau.
+Lors des vérifications de l’étape 1, plusieurs incohérences sont apparues.  
 La machine OPNsense était mal configurée, notamment au niveau des règles de firewall, ce qui bloquait totalement les communications entre les différents réseaux et empêchait la supervision correcte des équipements. L’accès à OPNsense était devenu impossible malgré plusieurs tentatives de redémarrage.
   
 - Nous avons donc redémarré et essayé de réinitialiser OPNsense.  
@@ -181,70 +141,49 @@ snmp-server enable
 ```
   
 On a ensuite redémarré le switch pour vérifier l'application de la configuration.  
+
+
   
 # Jour 4 – Supervision SNMP du switch
 ## Installation de SNMP Exporter
-Afin de superviser le switch via SNMP avec Prometheus, nous avons installé SNMP Exporter sur la VM de supervision (MON1).
-
-Téléchargement et installation manuelle :
-
+Afin de superviser le switch via SNMP avec Prometheus, nous avons installé SNMP Exporter sur la VM. Téléchargement :  
+```
 cd /tmp
 wget https://github.com/prometheus/snmp_exporter/releases/download/v0.30.1/snmp_exporter-0.30.1.linux-amd64.tar.gz
 tar xvf snmp_exporter-0.30.1.linux-amd64.tar.gz
 cd snmp_exporter-0.30.1.linux-amd64
 cp snmp_exporter /usr/local/bin/
-
-
-Lancement manuel pour vérification :
-
+```
+  
+Lancement :  
+```
 snmp_exporter --config.file=snmp.yml
+```
 
+Tests SNMP :
+```
+snmpwalk -v1 -cpublic 10.100.4.254 sysName
+```
+  
+On récolte un MIB complet du switch.  
+<img width="897" height="497" alt="image" src="https://github.com/user-attachments/assets/bfe21531-31b4-4400-93be-eb472140d473" />  
 
-SNMP Exporter écoute correctement sur le port 9116.
+## snmp.yml
+Par la suite nous devons exécuter snmp.yml pour faire fonctionner le tout sur la VM. Cela ne fonctionne pas. Nous pensions dans un premier temps que c'était dû aux modifications faites sur le github de SNMP exporter. Cependant après avoir mis à jour le snmp.yml conformément au nouveau format (disponible sur la documentation github de SNMP exporter) nous avons la même erreur.  
+Nous avons donc essayé de résoudre notre problème en allant la voir la configuration du groupe 2, ils nous indiquent un logiciel à installer qui génèrera de snmp.yml : generator. Nous l'installons donc puis essayons de le lancer, cependant impossible de le lancer car go n'est pas installé, nous l'installons de la manière suivante :  
+  
+```
+wget https://go.dev/dl/go1.25.6.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.25.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+```
+  
+Or après avoir installé toutes les librairies nécessaires et essayé de le lancer de différentes manières le generator ne fonctionne pas.  
+  
+<img width="905" height="493" alt="image" src="https://github.com/user-attachments/assets/182e1b22-4466-4803-981f-8171a39db1ff" />  
 
-Installation des outils SNMP
-
-Installation du client SNMP :
-
-apt update
-apt install snmp -y
-
-
-⚠️ Le paquet snmp-mibs-downloader n’est pas disponible sous Debian Trixie.
-Les MIBs ne sont donc pas installées, ce qui empêche l’utilisation des noms symboliques (ex. sysName, ifDescr).
-
-Tests SNMP
-
-Les commandes SNMP avec noms symboliques échouent :
-
-snmpwalk -v2c -c public 10.100.4.254 sysName
-
-
-Cela est normal en l’absence de MIBs.
-
-Les tests SNMP sont donc réalisés à l’aide d’OIDs numériques, ce qui reste parfaitement compatible avec Prometheus et SNMP Exporter.
-
-Intégration avec Prometheus
-
-SNMP Exporter est destiné à être interrogé par Prometheus via l’endpoint HTTP :
-
-http://localhost:9116/snmp?module=if_mib&target=10.100.4.254
-
-
-Cette configuration permet de collecter :
-
-L’état des interfaces
-
-Le trafic entrant/sortant
-
-Les erreurs et pertes sur les ports du switch
-
-Résultat
-
-SNMP activé et fonctionnel sur le switch
-
-SNMP Exporter installé et opérationnel
-
-Supervision recentrée sur un périmètre stable et maîtrisé
-
-Base prête pour l’affichage des métriques dans Grafana et la reconfiguration des alertes
+Après avoir essayé de différentes manière on identifie un problème, il y a l'air d'y avoir une incompatibilité entre le generator et la version de Go installée (surement nécessaire d'avoir Go 1.20 ou 1.21 pour compiler). Nous réessayons donc avec Go 1.20.1 mais l'erreur perciste :  
+<img width="912" height="505" alt="image" src="https://github.com/user-attachments/assets/5d64f808-f594-4d60-9440-0e00cc620120" />  
+  
+Nous sommes donc bloqués.
